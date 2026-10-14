@@ -1,0 +1,29 @@
+<html><head><meta charset="utf-8"><style>body{font-family:sans-serif;background:#111;color:#ddd;margin:20px}h2{border-bottom:1px solid #444;margin-top:36px}img{max-width:100%;border:1px solid #333}.d{color:#5d5}.u{color:#f77}</style></head><body>
+<h1>CameraHMR refinement — heatmap report (tuned λ=1.0, λ_rot=0.003)</h1>
+<p>Columns: image | CameraHMR before(red) | refined after(green) | GT(blue) | DensePose IUV | <b>location-loss on mesh</b> (reproj px, 0→25) | <b>rotation-loss on mesh</b> (geodesic°, 0→45). Loss is painted per-face on the CameraHMR baseline mesh (turbo: blue=low, red=high); grey/unpainted = no correspondence.</p>
+<h2>Top 10% — refinement HELPS most (ΔMPJPE)</h2>
+<div><b>imageFiles/downtown_runForBus_01/image_00767.jpg</b> pts=400 <span class="d">ΔMPJPE -120.3</span> (base MPJPE 330.8 → refined 210.5)</div><img src="imgs/top10_improve_00.jpg"><br>
+<div><b>imageFiles/downtown_bar_00/image_00079.jpg</b> pts=400 <span class="d">ΔMPJPE -24.8</span> (base MPJPE 104.0 → refined 79.2)</div><img src="imgs/top10_improve_01.jpg"><br>
+<div><b>imageFiles/downtown_upstairs_00/image_00360.jpg</b> pts=400 <span class="d">ΔMPJPE -18.7</span> (base MPJPE 92.0 → refined 73.3)</div><img src="imgs/top10_improve_02.jpg"><br>
+<div><b>imageFiles/downtown_car_00/image_00365.jpg</b> pts=400 <span class="d">ΔMPJPE -15.6</span> (base MPJPE 105.0 → refined 89.4)</div><img src="imgs/top10_improve_03.jpg"><br>
+<div><b>imageFiles/downtown_rampAndStairs_00/image_00242.jpg</b> pts=400 <span class="d">ΔMPJPE -13.1</span> (base MPJPE 67.3 → refined 54.2)</div><img src="imgs/top10_improve_04.jpg"><br>
+<div><b>imageFiles/downtown_weeklyMarket_00/image_00369.jpg</b> pts=400 <span class="d">ΔMPJPE -11.5</span> (base MPJPE 91.1 → refined 79.7)</div><img src="imgs/top10_improve_05.jpg"><br>
+<div><b>imageFiles/downtown_upstairs_00/image_00144.jpg</b> pts=400 <span class="d">ΔMPJPE -10.4</span> (base MPJPE 57.6 → refined 47.2)</div><img src="imgs/top10_improve_06.jpg"><br>
+<div><b>imageFiles/downtown_rampAndStairs_00/image_00147.jpg</b> pts=400 <span class="d">ΔMPJPE -9.6</span> (base MPJPE 61.1 → refined 51.5)</div><img src="imgs/top10_improve_07.jpg"><br>
+<div><b>imageFiles/downtown_sitOnStairs_00/image_00981.jpg</b> pts=400 <span class="d">ΔMPJPE -8.9</span> (base MPJPE 121.3 → refined 112.4)</div><img src="imgs/top10_improve_08.jpg"><br>
+<div><b>imageFiles/downtown_runForBus_00/image_00219.jpg</b> pts=400 <span class="d">ΔMPJPE -8.3</span> (base MPJPE 47.5 → refined 39.2)</div><img src="imgs/top10_improve_09.jpg"><br>
+<div><b>imageFiles/downtown_walking_00/image_01100.jpg</b> pts=400 <span class="d">ΔMPJPE -7.8</span> (base MPJPE 60.2 → refined 52.4)</div><img src="imgs/top10_improve_10.jpg"><br>
+<div><b>imageFiles/downtown_car_00/image_00209.jpg</b> pts=400 <span class="d">ΔMPJPE -7.4</span> (base MPJPE 130.7 → refined 123.3)</div><img src="imgs/top10_improve_11.jpg"><br>
+<h2>Bottom 10% — refinement HURTS most (ΔMPJPE)</h2>
+<div><b>imageFiles/downtown_windowShopping_00/image_00506.jpg</b> pts=269 <span class="u">ΔMPJPE +134.1</span> (base MPJPE 59.0 → refined 193.2)</div><img src="imgs/bottom10_hurt_00.jpg"><br>
+<div><b>imageFiles/downtown_runForBus_01/image_00555.jpg</b> pts=400 <span class="u">ΔMPJPE +15.8</span> (base MPJPE 88.3 → refined 104.1)</div><img src="imgs/bottom10_hurt_01.jpg"><br>
+<div><b>imageFiles/downtown_bar_00/image_00802.jpg</b> pts=400 <span class="u">ΔMPJPE +11.2</span> (base MPJPE 76.4 → refined 87.5)</div><img src="imgs/bottom10_hurt_02.jpg"><br>
+<div><b>imageFiles/downtown_bar_00/image_00658.jpg</b> pts=400 <span class="u">ΔMPJPE +9.5</span> (base MPJPE 56.6 → refined 66.2)</div><img src="imgs/bottom10_hurt_03.jpg"><br>
+<div><b>imageFiles/downtown_downstairs_00/image_00237.jpg</b> pts=400 <span class="u">ΔMPJPE +8.2</span> (base MPJPE 43.8 → refined 52.0)</div><img src="imgs/bottom10_hurt_04.jpg"><br>
+<div><b>imageFiles/downtown_weeklyMarket_00/image_00218.jpg</b> pts=400 <span class="u">ΔMPJPE +7.5</span> (base MPJPE 49.1 → refined 56.6)</div><img src="imgs/bottom10_hurt_05.jpg"><br>
+<div><b>imageFiles/downtown_weeklyMarket_00/image_00764.jpg</b> pts=400 <span class="u">ΔMPJPE +6.8</span> (base MPJPE 55.7 → refined 62.5)</div><img src="imgs/bottom10_hurt_06.jpg"><br>
+<div><b>imageFiles/downtown_upstairs_00/image_00640.jpg</b> pts=400 <span class="u">ΔMPJPE +6.2</span> (base MPJPE 24.0 → refined 30.2)</div><img src="imgs/bottom10_hurt_07.jpg"><br>
+<div><b>imageFiles/downtown_warmWelcome_00/image_00067.jpg</b> pts=400 <span class="u">ΔMPJPE +5.7</span> (base MPJPE 81.6 → refined 87.3)</div><img src="imgs/bottom10_hurt_08.jpg"><br>
+<div><b>imageFiles/downtown_runForBus_01/image_00610.jpg</b> pts=400 <span class="u">ΔMPJPE +5.3</span> (base MPJPE 113.4 → refined 118.8)</div><img src="imgs/bottom10_hurt_09.jpg"><br>
+<div><b>imageFiles/downtown_bar_00/image_00581.jpg</b> pts=400 <span class="u">ΔMPJPE +5.0</span> (base MPJPE 60.6 → refined 65.6)</div><img src="imgs/bottom10_hurt_10.jpg"><br>
+<div><b>imageFiles/downtown_runForBus_01/image_00414.jpg</b> pts=400 <span class="u">ΔMPJPE +4.7</span> (base MPJPE 86.5 → refined 91.2)</div><img src="imgs/bottom10_hurt_11.jpg"><br>

@@ -1,0 +1,14 @@
+<html><head><meta charset=utf-8><style>body{font-family:sans-serif;background:#fff;color:#111}img{width:100%;max-width:1900px}.it{border-bottom:1px solid #ccc;padding:6px 0}</style></head><body>
+<h2>BEDLAM2 oriented-DensePose — per-pixel 6D rotation GT, by channel</h2>
+<p>Each row: <b>RGB</b> | 6 channels of the 6D = the two camera-space basis columns <b>a0=R[:,0]</b> (a0x,a0y,a0z), <b>a1=R[:,1]</b> (a1x,a1y,a1z), diverging colormap in [-1,1] | <b>a0,a1 as RGB</b> | <b>R·N_template</b> (surface normal map) | <b>twist about N</b> (signed spin about the template normal, deg, cyclic colormap) — the gauge-free 3rd DoF (swing-twist split, doc §2). Smooth, seam-free variation = correct orientation GT.</p>
+<div class=it>seq_000011_0260_4<br><img src='imgs/00.png'></div>
+<div class=it>seq_000011_0265_0<br><img src='imgs/01.png'></div>
+<div class=it>seq_000011_0265_1<br><img src='imgs/02.png'></div>
+<div class=it>seq_000011_0265_2<br><img src='imgs/03.png'></div>
+<div class=it>seq_000011_0265_3<br><img src='imgs/04.png'></div>
+<div class=it>seq_000011_0265_4<br><img src='imgs/05.png'></div>
+<div class=it>seq_000011_0270_0<br><img src='imgs/06.png'></div>
+<div class=it>seq_000011_0270_1<br><img src='imgs/07.png'></div>
+<div class=it>seq_000011_0270_2<br><img src='imgs/08.png'></div>
+<div class=it>seq_000011_0270_3<br><img src='imgs/09.png'></div>
+</body></html>
