@@ -1,0 +1,21 @@
+DensePose tells a downstream model \emph{where} a pixel lies on the body, not
+\emph{how the surface is turned} there. We add the missing rotational degrees of
+freedom: a DINOv3+DPT network predicting, per pixel and in one pass, the usual part
+index and chart coordinates \emph{and} a full $SO(3)$ surface frame --- to our
+knowledge the first orientation output for DensePose. Anchored to the body template
+rather than the chart, the frame is continuous across chart seams, and composing it
+forward transports any template-attached direction into the image: camera-space
+normals, hair and weave tangents, and the twist about the normal that a normal map
+cannot carry. The model reaches $0.741$ geodesic-point-similarity (GPS) AP on
+DensePose-COCO minival under a ground-truth-box protocol, above every model in our own
+lineage --- though we re-score no published system under this harness, and the oriented
+output costs $2.1$ AP points at matched training step before the recipe recovers them.
+Retraining a CVPR'25 pose-guided generator with our correspondence model as the one
+changed input improves paired LPIPS by $0.0116$, better on $68.7\%$ of $8{,}512$ pairs
+and of the same order as the largest published step on that benchmark; FID does not
+move. Predicting a frame correctly is also what forced us to repair the correspondence:
+the official DP24 charts are non-injective on roughly half the hand and foot surface at
+a median $3$D collision of $60$--$67$\,mm, which a sheet split removes; we supervise
+correspondence in metres through a differentiable chart-to-template operator ($-46\%$
+hand and foot surface error against a matched control); and we add occlusion data under
+a sequence-level holdout ($14.80^\circ\!\rightarrow\!6.89^\circ$ frame error there).

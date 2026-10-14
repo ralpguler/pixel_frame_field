@@ -1,0 +1,31 @@
+DensePose-COCO minival eval matrix — started 10:29
+
+### v1 ViT-B  | GT-box
+   built 2243 predictions over 1508 images
+    Average Precision  (AP) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.557
+    Average Precision  (AP) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.917
+    Average Recall     (AR) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.671
+    Average Recall     (AR) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.952
+
+### v1 ViT-B  | DETECTOR
+   built 7235 predictions over 1506 images
+    Average Precision  (AP) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.543
+    Average Precision  (AP) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.885
+    Average Recall     (AR) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.634
+    Average Recall     (AR) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.938
+
+### v2 ViT-L  | GT-box (step40k)
+   built 2243 predictions over 1508 images
+    Average Precision  (AP) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.633
+    Average Precision  (AP) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.951
+    Average Recall     (AR) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.729
+    Average Recall     (AR) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.971
+
+### v2 ViT-L  | DETECTOR (step40k)
+   built 7235 predictions over 1506 images
+    Average Precision  (AP) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.590
+    Average Precision  (AP) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.904
+    Average Recall     (AR) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.680
+    Average Recall     (AR) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.951
+
+ALL_DONE 10:38

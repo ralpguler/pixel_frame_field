@@ -1,0 +1,17 @@
+ViT-L FINAL (75k, mIoU_fg 0.874) COCO eval — 16:14
+
+### GT-box
+   eval ckpt=/home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_v2_L512/final.pt backbone=vit_large_patch16_dinov3 Z=512 decoupled=False
+    Average Precision  (AP) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.633
+    Average Precision  (AP) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.952
+    Average Recall     (AR) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.729
+    Average Recall     (AR) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.972
+
+### DETECTOR-v2
+   eval ckpt=/home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_v2_L512/final.pt backbone=vit_large_patch16_dinov3 Z=512 decoupled=False
+    Average Precision  (AP) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.624
+    Average Precision  (AP) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.924
+    Average Recall     (AR) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.706
+    Average Recall     (AR) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.957
+
+DONE

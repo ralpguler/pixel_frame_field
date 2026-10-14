@@ -1,0 +1,482 @@
+======================================================================================================================================================
+S1_dp_csc_C_ckpt_025000.npz   split S1   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_csc_C/ckpt_025000.pt   images 512
+  SANITY eval_512 statistic (mean of per-batch medians, GT fg, pred-part gather): 6.772   | pixel-pooled MEAN over the same pixels: 8.949
+  pixels: GT fg 25109989  -> no hidden 25083303 (99.9%)  -> GT stencil 22894745 (91.2%)  -> +pred stencil 22298481 (88.8%)  -> Omega (all solves finite) 22244170 (88.6%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   8.03   6.01  14.55 |   6.69   4.99  12.67 |   3.49   2.11   7.01 ||   9.05   6.98  13.54
+  H-orc  head, GT-part gather        |   7.66   5.99  14.37 |   6.45   4.99  12.51 |   3.23   2.09   6.93 ||   8.60   6.80  12.92
+  D-pred-orc persp r3                |  25.84  20.31  48.37 |  22.90  18.23  44.73 |   9.23   5.19  18.53 ||  24.66  24.08  31.11
+  D-pred-part persp r3               |  28.69  20.83  57.27 |  25.59  18.71  52.77 |   9.99   5.27  19.39 ||  27.10  26.05  35.08
+  D-pred-smooth persp r3             |  28.73  20.83  57.29 |  25.63  18.73  52.81 |  10.02   5.27  19.39 ||  27.15  26.05  35.21
+  D-pred-orc WEAK r3                 |  31.30  26.81  54.35 |  27.25  23.49  49.49 |  12.33   8.17  25.31 ||  30.48  29.52  39.61
+  D-pred-smooth WEAK r3              |  34.59  27.83  64.03 |  30.39  24.39  58.73 |  13.15   8.31  26.13 ||  33.46  32.30  44.94
+  D-gt-orc persp r3                  |  15.53  11.91  32.85 |  14.63  10.97  31.79 |   3.87   2.39   9.07 ||  15.07  14.97  19.21
+  D-gt-part persp r3                 |  17.16  12.05  36.65 |  16.28  11.09  35.53 |   3.91   2.41   9.11 ||  16.35  16.14  20.87
+  D-gt-smooth persp r3               |  17.11  12.05  36.47 |  16.24  11.09  35.37 |   3.91   2.41   9.09 ||  16.32  16.13  20.82
+  D-gt-orc WEAK r3                   |  23.77  21.47  42.43 |  21.27  18.67  39.79 |   8.44   6.41  18.69 ||  23.61  22.14  34.80
+  D-gt-smooth WEAK r3                |  25.57  21.97  46.93 |  23.13  19.09  44.47 |   8.43   6.41  18.57 ||  25.20  23.43  37.18
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  27.51  r2  26.54  r3  25.84
+    D-pred-part  : r1  30.32  r2  29.24  r3  28.69
+    D-pred-smooth: r1  30.42  r2  29.30  r3  28.73
+    D-gt-orc   : r1  15.88  r2  15.59  r3  15.53
+    D-gt-part  : r1  17.51  r2  17.14  r3  17.16
+    D-gt-smooth: r1  17.47  r2  17.10  r3  17.11
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  99.4%   weak  99.4%   | back-facing persp  2.03%
+    pred r2: persp  99.3%   weak  99.4%   | back-facing persp  1.89%
+    pred r3: persp  99.3%   weak  99.3%   | back-facing persp  1.80%
+    gt   r1: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r2: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r3: persp  98.5%   weak  98.9%   | back-facing persp  0.08%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 503, loses 9, sign test p=9.43e-136, mean(other - H) +18.10 deg [95% CI +17.37, +18.82]
+    H vs D-pred-part-persp-r3    : head wins 503, loses 9, sign test p=9.43e-136, mean(other - H) +18.05 deg [95% CI +17.32, +18.77]
+    H vs D-pred-orc-persp-r3     : head wins 502, loses 10, sign test p=4.75e-134, mean(other - H) +15.62 deg [95% CI +15.01, +16.20]
+    H vs D-gt-orc-persp-r3       : head wins 460, loses 52, sign test p=1.09e-82, mean(other - H) +6.02 deg [95% CI +4.91, +6.93]
+    H vs D-gt-smooth-persp-r3    : head wins 468, loses 44, sign test p=1.49e-90, mean(other - H) +7.27 deg [95% CI +6.13, +8.23]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  6823422 | H 7.0/5.9/3.0 | Dpart 24.7/22.8/7.0 | Dsmooth 24.7/22.8/7.0 | Dorc 21.6/19.6/6.8 | GTorc 17.2/16.2/4.6 | GTsmooth 19.5/18.5/4.6 
+    arms       n=  2902761 | H 9.5/7.9/4.1 | Dpart 29.7/26.9/9.5 | Dsmooth 29.7/26.9/9.5 | Dorc 26.9/24.2/8.9 | GTorc 17.8/16.9/4.1 | GTsmooth 19.1/18.2/4.1 
+    legs       n=  8365762 | H 7.1/6.0/3.0 | Dpart 25.0/22.6/8.1 | Dsmooth 25.0/22.6/8.1 | Dorc 23.1/20.7/7.7 | GTorc 14.7/13.8/3.7 | GTsmooth 16.2/15.3/3.7 
+    hands_feet n=  2106473 | H 13.3/10.5/6.5 | Dpart 60.0/49.5/30.0 | Dsmooth 60.4/49.9/30.2 | Dorc 52.4/43.2/25.3 | GTorc 15.8/14.8/4.0 | GTsmooth 17.1/16.1/4.1 
+    head       n=  2045752 | H 7.9/6.7/3.3 | Dpart 23.2/20.9/7.8 | Dsmooth 23.3/21.0/7.8 | Dorc 22.4/20.1/7.5 | GTorc 9.8/9.5/1.9 | GTsmooth 10.0/9.7/1.9 
+    d<4        n=  1923388 | H 10.4/8.2/5.3 | Dpart 32.0/25.6/16.6 | Dsmooth 32.2/25.8/16.7 | Dorc 28.3/22.4/14.7 | GTorc 10.3/9.1/3.7 | GTsmooth 11.6/10.4/3.9 
+    d4-12      n=  5869176 | H 8.9/7.3/4.0 | Dpart 26.3/22.6/11.0 | Dsmooth 26.3/22.6/11.0 | Dorc 23.6/20.1/10.1 | GTorc 11.4/10.5/3.3 | GTsmooth 12.4/11.5/3.4 
+    d>=12      n= 14451606 | H 7.4/6.2/3.0 | Dpart 29.2/26.8/8.7 | Dsmooth 29.2/26.8/8.7 | Dorc 26.4/24.1/8.2 | GTorc 17.9/17.1/4.1 | GTsmooth 19.8/18.9/4.1 
+======================================================================================================================================================
+S1_dp_v21_M_ckpt_120000.npz   split S1   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_v21_M/ckpt_120000.pt   images 512
+  SANITY eval_512 statistic (mean of per-batch medians, GT fg, pred-part gather): 7.596   | pixel-pooled MEAN over the same pixels: 9.976
+  pixels: GT fg 25109989  -> no hidden 25083303 (99.9%)  -> GT stencil 22894745 (91.2%)  -> +pred stencil 22239467 (88.6%)  -> Omega (all solves finite) 22191864 (88.4%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   9.04   6.87  16.07 |   7.53   5.75  13.97 |   3.98   2.45   7.95 ||   9.73   7.70  13.74
+  H-orc  head, GT-part gather        |   8.56   6.85  15.83 |   7.20   5.73  13.75 |   3.63   2.45   7.83 ||   8.99   7.55  13.14
+  D-pred-orc persp r3                |  25.37  19.17  47.95 |  22.56  17.29  44.43 |   9.11   4.85  17.91 ||  24.46  24.09  30.64
+  D-pred-part persp r3               |  28.87  19.65  59.49 |  25.74  17.77  54.77 |  10.38   4.93  19.13 ||  27.64  26.89  35.58
+  D-pred-smooth persp r3             |  28.89  19.67  59.41 |  25.75  17.77  54.71 |  10.40   4.93  19.15 ||  27.66  26.87  35.68
+  D-pred-orc WEAK r3                 |  31.06  26.03  54.45 |  27.14  22.83  49.55 |  12.25   7.91  25.03 ||  30.37  29.00  39.83
+  D-pred-smooth WEAK r3              |  34.87  27.05  65.73 |  30.65  23.75  60.29 |  13.55   8.07  26.21 ||  33.94  33.03  46.27
+  D-gt-orc persp r3                  |  15.55  11.93  32.91 |  14.65  10.97  31.85 |   3.88   2.39   9.09 ||  15.08  15.00  19.20
+  D-gt-part persp r3                 |  17.08  12.05  36.55 |  16.20  11.09  35.45 |   3.91   2.41   9.11 ||  16.31  16.13  20.88
+  D-gt-smooth persp r3               |  17.03  12.05  36.39 |  16.16  11.09  35.29 |   3.91   2.41   9.11 ||  16.28  16.09  20.86
+  D-gt-orc WEAK r3                   |  23.79  21.49  42.49 |  21.28  18.69  39.83 |   8.45   6.41  18.73 ||  23.62  22.17  34.83
+  D-gt-smooth WEAK r3                |  25.55  21.97  46.91 |  23.10  19.07  44.45 |   8.44   6.41  18.59 ||  25.16  23.39  37.16
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  26.68  r2  25.89  r3  25.37
+    D-pred-part  : r1  29.99  r2  29.28  r3  28.87
+    D-pred-smooth: r1  30.07  r2  29.32  r3  28.89
+    D-gt-orc   : r1  15.90  r2  15.61  r3  15.55
+    D-gt-part  : r1  17.44  r2  17.31  r3  17.08
+    D-gt-smooth: r1  17.40  r2  17.27  r3  17.03
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  99.3%   weak  99.3%   | back-facing persp  4.34%
+    pred r2: persp  99.2%   weak  99.3%   | back-facing persp  4.28%
+    pred r3: persp  99.1%   weak  99.2%   | back-facing persp  4.25%
+    gt   r1: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r2: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r3: persp  98.5%   weak  98.9%   | back-facing persp  0.08%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 508, loses 4, sign test p=4.25e-145, mean(other - H) +17.93 deg [95% CI +17.17, +18.68]
+    H vs D-pred-part-persp-r3    : head wins 508, loses 4, sign test p=4.25e-145, mean(other - H) +17.91 deg [95% CI +17.15, +18.65]
+    H vs D-pred-orc-persp-r3     : head wins 506, loses 6, sign test p=3.67e-141, mean(other - H) +14.73 deg [95% CI +14.13, +15.28]
+    H vs D-gt-orc-persp-r3       : head wins 454, loses 58, sign test p=3.48e-77, mean(other - H) +5.35 deg [95% CI +4.30, +6.21]
+    H vs D-gt-smooth-persp-r3    : head wins 463, loses 49, sign test p=1.45e-85, mean(other - H) +6.55 deg [95% CI +5.45, +7.47]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  6810077 | H 7.7/6.4/3.3 | Dpart 23.5/21.8/6.4 | Dsmooth 23.5/21.8/6.4 | Dorc 20.4/18.7/6.3 | GTorc 17.2/16.2/4.6 | GTsmooth 19.2/18.1/4.6 
+    arms       n=  2888547 | H 10.8/9.2/4.6 | Dpart 28.7/26.2/9.1 | Dsmooth 28.6/26.1/9.1 | Dorc 25.8/23.3/8.3 | GTorc 17.8/16.9/4.1 | GTsmooth 19.0/18.2/4.1 
+    legs       n=  8356207 | H 8.0/6.7/3.5 | Dpart 23.1/20.9/7.2 | Dsmooth 23.1/20.9/7.2 | Dorc 21.3/19.2/6.9 | GTorc 14.7/13.9/3.7 | GTsmooth 16.3/15.4/3.8 
+    hands_feet n=  2095410 | H 15.2/12.1/7.5 | Dpart 77.2/63.5/41.0 | Dsmooth 77.5/63.9/41.2 | Dorc 61.8/51.4/30.4 | GTorc 15.8/14.8/4.0 | GTsmooth 17.0/16.1/4.1 
+    head       n=  2041623 | H 9.1/7.7/3.7 | Dpart 21.0/19.0/7.0 | Dsmooth 21.1/19.0/7.0 | Dorc 20.5/18.5/6.8 | GTorc 9.8/9.5/1.9 | GTsmooth 10.0/9.7/1.9 
+    d<4        n=  1918985 | H 11.4/9.0/5.8 | Dpart 35.0/28.5/17.8 | Dsmooth 35.2/28.7/17.8 | Dorc 29.0/23.4/14.4 | GTorc 10.3/9.1/3.7 | GTsmooth 11.6/10.3/3.8 
+    d4-12      n=  5845992 | H 9.8/8.0/4.5 | Dpart 28.5/24.5/12.4 | Dsmooth 28.5/24.5/12.4 | Dorc 24.3/20.9/10.2 | GTorc 11.3/10.5/3.3 | GTsmooth 12.3/11.5/3.4 
+    d>=12      n= 14426887 | H 8.4/7.1/3.5 | Dpart 28.2/25.9/8.6 | Dsmooth 28.2/25.9/8.6 | Dorc 25.4/23.1/8.0 | GTorc 17.9/17.1/4.1 | GTsmooth 19.7/18.8/4.1 
+======================================================================================================================================================
+S1_dp_w_B_ckpt_120000.npz   split S1   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_w_B/ckpt_120000.pt   images 512
+  SANITY eval_512 statistic (mean of per-batch medians, GT fg, pred-part gather): 6.978   | pixel-pooled MEAN over the same pixels: 9.340
+  pixels: GT fg 25109989  -> no hidden 25083303 (99.9%)  -> GT stencil 22894745 (91.2%)  -> +pred stencil 22263488 (88.7%)  -> Omega (all solves finite) 22233091 (88.5%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   8.40   6.51  14.53 |   6.98   5.41  12.77 |   3.70   2.31   7.39 ||   9.01   7.47  12.89
+  H-orc  head, GT-part gather        |   7.99   6.49  14.33 |   6.72   5.39  12.59 |   3.40   2.29   7.29 ||   8.66   7.27  12.38
+  D-pred-orc persp r3                |  25.24  19.01  47.83 |  22.48  17.15  44.43 |   9.00   4.81  17.51 ||  24.38  24.62  29.79
+  D-pred-part persp r3               |  28.37  19.39  57.85 |  25.25  17.55  53.51 |  10.23   4.89  18.65 ||  27.30  26.46  34.18
+  D-pred-smooth persp r3             |  28.39  19.41  57.77 |  25.27  17.55  53.47 |  10.25   4.89  18.67 ||  27.34  26.52  34.24
+  D-pred-orc WEAK r3                 |  31.12  26.03  54.41 |  27.21  22.87  49.59 |  12.24   7.97  24.87 ||  30.52  29.26  38.80
+  D-pred-smooth WEAK r3              |  34.72  26.97  64.99 |  30.47  23.73  59.83 |  13.54   8.15  25.99 ||  34.00  32.65  44.50
+  D-gt-orc persp r3                  |  15.53  11.91  32.87 |  14.64  10.97  31.83 |   3.87   2.39   9.07 ||  15.07  14.97  19.20
+  D-gt-part persp r3                 |  17.11  12.05  36.61 |  16.23  11.09  35.51 |   3.91   2.41   9.11 ||  16.35  16.15  20.89
+  D-gt-smooth persp r3               |  17.06  12.03  36.43 |  16.19  11.09  35.33 |   3.91   2.41   9.11 ||  16.32  16.11  20.84
+  D-gt-orc WEAK r3                   |  23.77  21.47  42.47 |  21.27  18.69  39.81 |   8.44   6.41  18.69 ||  23.61  22.17  34.76
+  D-gt-smooth WEAK r3                |  25.59  21.97  46.97 |  23.15  19.09  44.51 |   8.43   6.41  18.57 ||  25.18  23.46  37.18
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  26.52  r2  25.75  r3  25.24
+    D-pred-part  : r1  29.50  r2  28.78  r3  28.37
+    D-pred-smooth: r1  29.59  r2  28.82  r3  28.39
+    D-gt-orc   : r1  15.89  r2  15.60  r3  15.53
+    D-gt-part  : r1  17.58  r2  17.11  r3  17.11
+    D-gt-smooth: r1  17.55  r2  17.07  r3  17.06
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  99.3%   weak  99.4%   | back-facing persp  4.10%
+    pred r2: persp  99.2%   weak  99.3%   | back-facing persp  4.04%
+    pred r3: persp  99.2%   weak  99.3%   | back-facing persp  4.01%
+    gt   r1: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r2: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r3: persp  98.5%   weak  98.9%   | back-facing persp  0.07%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 510, loses 2, sign test p=1.96e-149, mean(other - H) +18.33 deg [95% CI +17.79, +18.88]
+    H vs D-pred-part-persp-r3    : head wins 510, loses 2, sign test p=1.96e-149, mean(other - H) +18.30 deg [95% CI +17.75, +18.85]
+    H vs D-pred-orc-persp-r3     : head wins 508, loses 4, sign test p=4.25e-145, mean(other - H) +15.37 deg [95% CI +14.91, +15.81]
+    H vs D-gt-orc-persp-r3       : head wins 471, loses 41, sign test p=1.13e-93, mean(other - H) +6.06 deg [95% CI +5.21, +6.79]
+    H vs D-gt-smooth-persp-r3    : head wins 476, loses 36, sign test p=4.20e-99, mean(other - H) +7.31 deg [95% CI +6.42, +8.10]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  6815318 | H 7.2/6.0/3.1 | Dpart 22.9/21.1/6.4 | Dsmooth 22.9/21.1/6.3 | Dorc 20.5/18.7/6.3 | GTorc 17.2/16.2/4.6 | GTsmooth 19.3/18.3/4.6 
+    arms       n=  2895660 | H 9.7/8.0/4.4 | Dpart 27.8/25.5/8.4 | Dsmooth 27.7/25.4/8.4 | Dorc 25.3/22.9/8.0 | GTorc 17.8/16.9/4.1 | GTsmooth 19.1/18.2/4.1 
+    legs       n=  8357212 | H 7.5/6.3/3.2 | Dpart 23.0/20.8/7.2 | Dsmooth 22.9/20.8/7.2 | Dorc 21.2/19.1/6.9 | GTorc 14.7/13.8/3.7 | GTsmooth 16.2/15.4/3.7 
+    hands_feet n=  2118835 | H 14.3/11.3/7.0 | Dpart 75.5/61.9/40.4 | Dsmooth 75.9/62.3/40.6 | Dorc 60.9/51.0/29.7 | GTorc 15.8/14.8/4.0 | GTsmooth 17.0/16.1/4.1 
+    head       n=  2046066 | H 8.1/6.9/3.2 | Dpart 20.8/18.9/6.7 | Dsmooth 20.9/19.0/6.7 | Dorc 20.3/18.5/6.5 | GTorc 9.9/9.5/1.9 | GTsmooth 10.0/9.7/1.9 
+    d<4        n=  1924458 | H 10.7/8.4/5.5 | Dpart 34.2/27.5/17.9 | Dsmooth 34.3/27.7/18.0 | Dorc 28.6/23.0/14.3 | GTorc 10.3/9.1/3.7 | GTsmooth 11.6/10.3/3.8 
+    d4-12      n=  5865389 | H 9.1/7.5/4.2 | Dpart 28.0/24.0/12.3 | Dsmooth 28.1/24.1/12.3 | Dorc 24.2/20.8/10.1 | GTorc 11.4/10.5/3.3 | GTsmooth 12.3/11.5/3.4 
+    d>=12      n= 14443244 | H 7.8/6.6/3.3 | Dpart 27.7/25.4/8.4 | Dsmooth 27.7/25.4/8.4 | Dorc 25.2/23.1/7.8 | GTorc 17.9/17.1/4.1 | GTsmooth 19.7/18.9/4.1 
+======================================================================================================================================================
+S1_dp_w_MF_ckpt_003000.npz   split S1   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_w_MF/ckpt_003000.pt   images 512
+  SANITY eval_512 statistic (mean of per-batch medians, GT fg, pred-part gather): 7.320   | pixel-pooled MEAN over the same pixels: 9.935
+  pixels: GT fg 25109989  -> no hidden 25083303 (99.9%)  -> GT stencil 22894745 (91.2%)  -> +pred stencil 22242922 (88.6%)  -> Omega (all solves finite) 22177754 (88.3%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   8.96   6.83  15.47 |   7.40   5.67  13.57 |   4.02   2.47   7.85 ||   9.70   7.52  13.83
+  H-orc  head, GT-part gather        |   8.43   6.81  15.25 |   7.07   5.65  13.39 |   3.62   2.47   7.69 ||   9.08   7.32  13.18
+  D-pred-orc persp r3                |  25.14  19.47  47.47 |  22.26  17.47  43.91 |   9.00   4.99  18.01 ||  24.04  23.62  30.61
+  D-pred-part persp r3               |  28.03  19.91  56.27 |  24.96  17.87  51.93 |   9.86   5.05  18.89 ||  26.63  25.48  34.88
+  D-pred-smooth persp r3             |  28.07  19.91  56.31 |  25.00  17.89  51.97 |   9.89   5.05  18.91 ||  26.67  25.55  34.93
+  D-pred-orc WEAK r3                 |  30.77  26.13  53.83 |  26.83  22.95  49.01 |  12.08   7.95  24.87 ||  30.01  28.71  38.50
+  D-pred-smooth WEAK r3              |  34.13  27.09  63.25 |  29.99  23.81  58.03 |  13.06   8.09  25.89 ||  33.11  31.09  44.01
+  D-gt-orc persp r3                  |  15.54  11.91  32.87 |  14.64  10.97  31.81 |   3.87   2.39   9.07 ||  15.08  14.97  19.19
+  D-gt-part persp r3                 |  17.08  12.03  36.53 |  16.20  11.09  35.43 |   3.91   2.41   9.11 ||  16.31  16.16  20.86
+  D-gt-smooth persp r3               |  17.03  12.03  36.35 |  16.15  11.09  35.25 |   3.91   2.41   9.11 ||  16.28  16.14  20.90
+  D-gt-orc WEAK r3                   |  23.78  21.49  42.47 |  21.28  18.69  39.81 |   8.45   6.41  18.71 ||  23.62  22.17  34.82
+  D-gt-smooth WEAK r3                |  25.66  21.99  47.13 |  23.22  19.11  44.67 |   8.43   6.41  18.59 ||  25.26  23.37  37.40
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  26.56  r2  25.71  r3  25.14
+    D-pred-part  : r1  29.55  r2  28.60  r3  28.03
+    D-pred-smooth: r1  29.65  r2  28.66  r3  28.07
+    D-gt-orc   : r1  15.89  r2  15.60  r3  15.54
+    D-gt-part  : r1  17.42  r2  17.18  r3  17.08
+    D-gt-smooth: r1  17.38  r2  17.14  r3  17.03
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  99.3%   weak  99.4%   | back-facing persp  3.04%
+    pred r2: persp  99.2%   weak  99.3%   | back-facing persp  2.93%
+    pred r3: persp  99.2%   weak  99.3%   | back-facing persp  2.86%
+    gt   r1: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r2: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r3: persp  98.5%   weak  98.9%   | back-facing persp  0.08%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 506, loses 6, sign test p=3.67e-141, mean(other - H) +16.98 deg [95% CI +16.33, +17.62]
+    H vs D-pred-part-persp-r3    : head wins 506, loses 6, sign test p=3.67e-141, mean(other - H) +16.93 deg [95% CI +16.29, +17.57]
+    H vs D-pred-orc-persp-r3     : head wins 500, loses 12, sign test p=9.09e-131, mean(other - H) +14.34 deg [95% CI +13.76, +14.89]
+    H vs D-gt-orc-persp-r3       : head wins 457, loses 55, sign test p=6.74e-80, mean(other - H) +5.38 deg [95% CI +4.28, +6.29]
+    H vs D-gt-smooth-persp-r3    : head wins 468, loses 44, sign test p=1.49e-90, mean(other - H) +6.58 deg [95% CI +5.46, +7.54]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  6814345 | H 7.7/6.4/3.5 | Dpart 23.4/21.5/6.5 | Dsmooth 23.4/21.5/6.5 | Dorc 20.7/18.9/6.4 | GTorc 17.2/16.2/4.6 | GTsmooth 19.2/18.2/4.6 
+    arms       n=  2889948 | H 11.2/9.1/5.2 | Dpart 29.3/26.5/9.3 | Dsmooth 29.2/26.4/9.3 | Dorc 26.2/23.4/8.8 | GTorc 17.8/16.9/4.1 | GTsmooth 19.1/18.2/4.1 
+    legs       n=  8339703 | H 7.9/6.6/3.4 | Dpart 23.9/21.5/7.8 | Dsmooth 23.9/21.5/7.8 | Dorc 22.1/19.8/7.4 | GTorc 14.7/13.8/3.7 | GTsmooth 16.2/15.4/3.7 
+    hands_feet n=  2088941 | H 14.9/11.8/7.5 | Dpart 64.6/53.3/32.7 | Dsmooth 65.0/53.7/33.0 | Dorc 54.7/45.2/26.3 | GTorc 15.8/14.9/4.0 | GTsmooth 17.1/16.1/4.1 
+    head       n=  2044817 | H 8.3/7.1/3.4 | Dpart 21.4/19.3/7.0 | Dsmooth 21.4/19.4/7.0 | Dorc 20.7/18.7/6.7 | GTorc 9.9/9.5/1.9 | GTsmooth 10.1/9.7/1.9 
+    d<4        n=  1917929 | H 11.4/8.9/5.8 | Dpart 32.6/26.2/16.6 | Dsmooth 32.8/26.4/16.8 | Dorc 28.2/22.5/14.4 | GTorc 10.3/9.1/3.7 | GTsmooth 11.6/10.4/3.8 
+    d4-12      n=  5848872 | H 9.7/7.9/4.5 | Dpart 26.4/22.6/11.1 | Dsmooth 26.4/22.6/11.2 | Dorc 23.2/19.8/9.9 | GTorc 11.3/10.5/3.3 | GTsmooth 12.3/11.5/3.4 
+    d>=12      n= 14410953 | H 8.3/7.0/3.6 | Dpart 28.1/25.7/8.4 | Dsmooth 28.1/25.8/8.4 | Dorc 25.5/23.2/7.9 | GTorc 17.9/17.1/4.1 | GTsmooth 19.7/18.8/4.1 
+======================================================================================================================================================
+S1_dp_w_M_ckpt_120000.npz   split S1   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_w_M/ckpt_120000.pt   images 512
+  SANITY eval_512 statistic (mean of per-batch medians, GT fg, pred-part gather): 6.859   | pixel-pooled MEAN over the same pixels: 9.410
+  pixels: GT fg 25109989  -> no hidden 25083303 (99.9%)  -> GT stencil 22894745 (91.2%)  -> +pred stencil 22261188 (88.7%)  -> Omega (all solves finite) 22201315 (88.4%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   8.46   6.41  14.75 |   6.98   5.29  12.89 |   3.81   2.31   7.43 ||   9.17   7.22  13.08
+  H-orc  head, GT-part gather        |   7.97   6.39  14.55 |   6.68   5.29  12.73 |   3.43   2.31   7.31 ||   8.53   7.06  12.46
+  D-pred-orc persp r3                |  24.50  18.83  46.31 |  21.73  16.91  42.95 |   8.72   4.79  17.37 ||  23.44  23.25  29.93
+  D-pred-part persp r3               |  27.44  19.25  55.17 |  24.47  17.31  51.03 |   9.58   4.85  18.17 ||  26.07  25.31  33.72
+  D-pred-smooth persp r3             |  27.47  19.25  55.19 |  24.49  17.33  51.07 |   9.61   4.85  18.17 ||  26.11  25.36  33.66
+  D-pred-orc WEAK r3                 |  30.31  25.75  53.03 |  26.43  22.57  48.29 |  11.88   7.83  24.45 ||  29.61  28.45  38.08
+  D-pred-smooth WEAK r3              |  33.67  26.69  62.43 |  29.59  23.41  57.41 |  12.82   7.95  25.33 ||  32.72  30.97  43.50
+  D-gt-orc persp r3                  |  15.54  11.91  32.89 |  14.64  10.97  31.83 |   3.87   2.39   9.09 ||  15.08  14.98  19.18
+  D-gt-part persp r3                 |  17.06  12.03  36.49 |  16.18  11.09  35.37 |   3.91   2.41   9.11 ||  16.30  16.14  20.83
+  D-gt-smooth persp r3               |  17.02  12.03  36.31 |  16.14  11.09  35.21 |   3.91   2.41   9.11 ||  16.27  16.13  20.86
+  D-gt-orc WEAK r3                   |  23.78  21.49  42.47 |  21.28  18.69  39.81 |   8.45   6.41  18.71 ||  23.62  22.15  34.79
+  D-gt-smooth WEAK r3                |  25.53  21.95  46.85 |  23.09  19.07  44.37 |   8.44   6.41  18.59 ||  25.15  23.41  37.27
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  25.93  r2  25.07  r3  24.50
+    D-pred-part  : r1  28.72  r2  27.83  r3  27.44
+    D-pred-smooth: r1  28.80  r2  27.87  r3  27.47
+    D-gt-orc   : r1  15.89  r2  15.60  r3  15.54
+    D-gt-part  : r1  17.45  r2  17.19  r3  17.06
+    D-gt-smooth: r1  17.42  r2  17.15  r3  17.02
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  99.3%   weak  99.3%   | back-facing persp  3.00%
+    pred r2: persp  99.2%   weak  99.3%   | back-facing persp  2.89%
+    pred r3: persp  99.1%   weak  99.2%   | back-facing persp  2.82%
+    gt   r1: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r2: persp  98.5%   weak  99.0%   | back-facing persp  0.06%
+    gt   r3: persp  98.5%   weak  98.9%   | back-facing persp  0.07%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 507, loses 5, sign test p=4.33e-143, mean(other - H) +16.94 deg [95% CI +16.31, +17.55]
+    H vs D-pred-part-persp-r3    : head wins 507, loses 5, sign test p=4.33e-143, mean(other - H) +16.90 deg [95% CI +16.28, +17.52]
+    H vs D-pred-orc-persp-r3     : head wins 502, loses 10, sign test p=4.75e-134, mean(other - H) +14.27 deg [95% CI +13.73, +14.79]
+    H vs D-gt-orc-persp-r3       : head wins 467, loses 45, sign test p=1.55e-89, mean(other - H) +5.91 deg [95% CI +4.87, +6.78]
+    H vs D-gt-smooth-persp-r3    : head wins 475, loses 37, sign test p=5.42e-98, mean(other - H) +7.10 deg [95% CI +6.02, +8.02]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  6814123 | H 7.2/5.9/3.2 | Dpart 23.3/21.5/6.4 | Dsmooth 23.3/21.5/6.4 | Dorc 20.4/18.5/6.3 | GTorc 17.2/16.2/4.6 | GTsmooth 19.2/18.1/4.6 
+    arms       n=  2895312 | H 10.7/8.7/5.0 | Dpart 28.3/25.6/9.0 | Dsmooth 28.3/25.6/9.0 | Dorc 25.7/23.0/8.5 | GTorc 17.8/16.9/4.1 | GTsmooth 19.1/18.2/4.1 
+    legs       n=  8355510 | H 7.5/6.3/3.2 | Dpart 23.0/20.8/7.4 | Dsmooth 23.0/20.8/7.4 | Dorc 21.2/19.1/7.1 | GTorc 14.7/13.8/3.7 | GTsmooth 16.2/15.4/3.7 
+    hands_feet n=  2091355 | H 14.3/11.2/7.2 | Dpart 64.2/53.1/32.4 | Dsmooth 64.5/53.4/32.7 | Dorc 53.7/44.4/25.8 | GTorc 15.8/14.8/4.0 | GTsmooth 17.0/16.1/4.1 
+    head       n=  2045015 | H 7.9/6.7/3.3 | Dpart 20.6/18.7/6.7 | Dsmooth 20.7/18.8/6.7 | Dorc 20.1/18.2/6.5 | GTorc 9.9/9.5/1.9 | GTsmooth 10.0/9.7/1.9 
+    d<4        n=  1921105 | H 10.9/8.5/5.6 | Dpart 31.8/25.7/16.2 | Dsmooth 32.0/25.9/16.3 | Dorc 27.4/21.9/13.9 | GTorc 10.3/9.1/3.7 | GTsmooth 11.6/10.3/3.8 
+    d4-12      n=  5854897 | H 9.2/7.5/4.3 | Dpart 25.7/22.1/10.8 | Dsmooth 25.7/22.1/10.9 | Dorc 22.6/19.3/9.6 | GTorc 11.3/10.5/3.3 | GTsmooth 12.3/11.5/3.4 
+    d>=12      n= 14425313 | H 7.8/6.6/3.4 | Dpart 27.5/25.3/8.2 | Dsmooth 27.6/25.3/8.2 | Dorc 24.9/22.7/7.7 | GTorc 17.9/17.1/4.1 | GTsmooth 19.6/18.8/4.1 
+======================================================================================================================================================
+S2_dp_csc_C_ckpt_025000.npz   split S2   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_csc_C/ckpt_025000.pt   images 640
+  SANITY indomain_probe (native decode, pooled mean): geo_e2e 6.400  geo_oracle 6.055  n=640
+  pixels: GT fg 13282697  -> no hidden 13270323 (99.9%)  -> GT stencil 11447641 (86.2%)  -> +pred stencil 11167012 (84.1%)  -> Omega (all solves finite) 11153111 (84.0%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   5.77   4.71   9.61 |   4.98   4.01   8.71 |   2.26   1.59   4.61 ||   5.87   5.54   7.39
+  H-orc  head, GT-part gather        |   5.73   4.71   9.61 |   4.95   4.01   8.69 |   2.23   1.59   4.61 ||   5.82   5.51   7.29
+  D-pred-orc persp r3                |  17.41  13.35  32.73 |  15.93  12.21  31.41 |   5.30   3.23  10.27 ||  17.50  16.88  21.39
+  D-pred-part persp r3               |  18.34  13.41  34.83 |  16.81  12.27  33.47 |   5.53   3.25  10.37 ||  18.49  17.55  23.19
+  D-pred-smooth persp r3             |  18.42  13.43  35.05 |  16.89  12.29  33.71 |   5.54   3.23  10.37 ||  18.57  17.65  23.30
+  D-pred-orc WEAK r3                 |  21.05  17.71  36.89 |  19.08  16.07  35.01 |   6.91   4.69  13.81 ||  21.15  19.51  28.64
+  D-pred-smooth WEAK r3              |  22.46  18.01  40.35 |  20.43  16.33  38.53 |   7.22   4.77  14.01 ||  22.61  20.53  31.45
+  D-gt-orc persp r2                  |  10.98   7.77  23.91 |  10.47   7.31  23.25 |   2.45   1.45   5.59 ||  10.84  10.59  13.40
+  D-gt-part persp r2                 |  11.51   7.77  25.05 |  11.00   7.33  24.37 |   2.48   1.45   5.63 ||  11.35  10.90  14.29
+  D-gt-smooth persp r2               |  11.50   7.77  25.07 |  10.99   7.33  24.39 |   2.47   1.45   5.63 ||  11.35  10.92  14.22
+  D-gt-orc WEAK r2                   |  16.35  14.05  30.23 |  15.02  12.69  28.79 |   5.00   3.73  10.75 ||  16.29  14.64  25.13
+  D-gt-smooth WEAK r2                |  17.13  14.19  31.95 |  15.81  12.79  30.55 |   5.05   3.77  10.79 ||  17.06  15.10  26.98
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  19.24  r2  18.13  r3  17.41
+    D-pred-part  : r1  20.17  r2  19.03  r3  18.34
+    D-pred-smooth: r1  20.29  r2  19.13  r3  18.42
+    D-gt-orc   : r1  11.20  r2  10.98  r3  11.13
+    D-gt-part  : r1  11.72  r2  11.51  r3  11.70
+    D-gt-smooth: r1  11.71  r2  11.50  r3  11.70
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  98.9%   weak  98.9%   | back-facing persp  0.82%
+    pred r2: persp  98.8%   weak  98.8%   | back-facing persp  0.78%
+    pred r3: persp  98.6%   weak  98.6%   | back-facing persp  0.75%
+    gt   r1: persp  97.6%   weak  97.8%   | back-facing persp  0.06%
+    gt   r2: persp  97.6%   weak  97.8%   | back-facing persp  0.07%
+    gt   r3: persp  97.6%   weak  97.8%   | back-facing persp  0.08%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +12.70 deg [95% CI +12.44, +12.96]
+    H vs D-pred-part-persp-r3    : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +12.62 deg [95% CI +12.36, +12.88]
+    H vs D-pred-orc-persp-r3     : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +11.63 deg [95% CI +11.43, +11.83]
+    H vs D-gt-orc-persp-r2       : head wins 629, loses 11, sign test p=7.56e-170, mean(other - H) +4.97 deg [95% CI +4.78, +5.15]
+    H vs D-gt-smooth-persp-r2    : head wins 631, loses 9, sign test p=2.09e-173, mean(other - H) +5.48 deg [95% CI +5.27, +5.69]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  3843431 | H 5.2/4.4/2.2 | Dpart 16.6/15.4/4.4 | Dsmooth 16.6/15.4/4.4 | Dorc 15.7/14.6/4.4 | GTorc 12.6/12.0/3.0 | GTsmooth 13.5/12.8/3.1 
+    arms       n=  1420773 | H 8.7/7.8/2.9 | Dpart 23.0/21.4/6.3 | Dsmooth 23.0/21.5/6.3 | Dorc 21.5/20.0/6.0 | GTorc 14.1/13.5/3.3 | GTsmooth 14.6/13.9/3.3 
+    legs       n=  3769178 | H 4.5/3.9/1.7 | Dpart 13.9/13.0/3.6 | Dsmooth 13.9/13.0/3.6 | Dorc 13.4/12.5/3.5 | GTorc 9.1/8.7/1.8 | GTsmooth 9.4/9.0/1.8 
+    hands_feet n=   920835 | H 10.1/8.3/4.7 | Dpart 41.1/34.8/18.6 | Dsmooth 41.5/35.3/18.8 | Dorc 37.6/32.1/16.4 | GTorc 12.1/11.4/2.8 | GTsmooth 13.0/12.3/3.0 
+    head       n=  1198894 | H 4.8/4.2/1.7 | Dpart 15.2/14.0/4.4 | Dsmooth 15.3/14.1/4.4 | Dorc 15.1/13.9/4.3 | GTorc 7.0/6.8/1.3 | GTsmooth 7.1/6.9/1.3 
+    d<4        n=  1730906 | H 7.6/6.3/3.5 | Dpart 21.8/18.5/9.7 | Dsmooth 22.0/18.7/9.7 | Dorc 20.1/17.0/8.8 | GTorc 8.3/7.5/2.5 | GTsmooth 8.8/8.0/2.6 
+    d4-12      n=  4699160 | H 5.9/5.2/2.2 | Dpart 17.0/15.5/5.4 | Dsmooth 17.1/15.6/5.4 | Dorc 16.3/14.8/5.2 | GTorc 9.1/8.6/2.2 | GTsmooth 9.3/8.9/2.2 
+    d>=12      n=  4723045 | H 5.0/4.3/1.9 | Dpart 18.4/17.5/4.2 | Dsmooth 18.5/17.6/4.2 | Dorc 17.6/16.7/4.1 | GTorc 13.8/13.4/2.7 | GTsmooth 14.6/14.2/2.7 
+======================================================================================================================================================
+S2_dp_v21_M_ckpt_120000.npz   split S2   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_v21_M/ckpt_120000.pt   images 640
+  SANITY indomain_probe (native decode, pooled mean): geo_e2e 7.306  geo_oracle 6.835  n=640
+  pixels: GT fg 13282697  -> no hidden 13270323 (99.9%)  -> GT stencil 11447641 (86.2%)  -> +pred stencil 11112765 (83.7%)  -> Omega (all solves finite) 11098063 (83.6%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   6.55   5.25  10.97 |   5.65   4.47   9.93 |   2.59   1.79   5.19 ||   6.69   6.22   9.10
+  H-orc  head, GT-part gather        |   6.47   5.23  10.95 |   5.59   4.47   9.91 |   2.53   1.79   5.19 ||   6.60   6.18   8.83
+  D-pred-orc persp r3                |  17.42  12.19  33.11 |  15.86  11.19  31.79 |   5.55   2.95   9.99 ||  17.64  16.70  21.40
+  D-pred-part persp r3               |  18.88  12.25  36.13 |  17.05  11.23  34.71 |   6.25   2.97  10.31 ||  19.19  18.00  23.66
+  D-pred-smooth persp r3             |  18.94  12.25  36.31 |  17.12  11.25  34.89 |   6.26   2.97  10.31 ||  19.26  18.09  23.58
+  D-pred-orc WEAK r3                 |  21.21  16.79  37.11 |  19.17  15.27  35.27 |   7.17   4.51  13.57 ||  21.45  19.80  29.49
+  D-pred-smooth WEAK r3              |  23.10  17.05  41.39 |  20.77  15.51  39.55 |   8.02   4.59  14.01 ||  23.47  21.28  32.93
+  D-gt-orc persp r2                  |  10.99   7.77  23.93 |  10.48   7.31  23.25 |   2.45   1.45   5.59 ||  10.85  10.58  13.38
+  D-gt-part persp r2                 |  11.56   7.79  25.13 |  11.05   7.33  24.45 |   2.48   1.45   5.63 ||  11.39  10.90  14.30
+  D-gt-smooth persp r2               |  11.54   7.79  25.13 |  11.04   7.33  24.45 |   2.47   1.45   5.63 ||  11.38  10.91  14.22
+  D-gt-orc WEAK r2                   |  16.35  14.05  30.25 |  15.03  12.69  28.79 |   5.00   3.73  10.75 ||  16.30  14.63  25.16
+  D-gt-smooth WEAK r2                |  17.10  14.19  31.91 |  15.78  12.79  30.51 |   5.05   3.77  10.79 ||  17.03  15.11  26.84
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  18.71  r2  17.86  r3  17.42
+    D-pred-part  : r1  20.14  r2  19.31  r3  18.88
+    D-pred-smooth: r1  20.24  r2  19.38  r3  18.94
+    D-gt-orc   : r1  11.21  r2  10.99  r3  11.14
+    D-gt-part  : r1  11.72  r2  11.56  r3  11.67
+    D-gt-smooth: r1  11.71  r2  11.54  r3  11.67
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  98.7%   weak  98.7%   | back-facing persp  3.44%
+    pred r2: persp  98.6%   weak  98.6%   | back-facing persp  3.44%
+    pred r3: persp  98.5%   weak  98.5%   | back-facing persp  3.45%
+    gt   r1: persp  97.6%   weak  97.8%   | back-facing persp  0.06%
+    gt   r2: persp  97.6%   weak  97.8%   | back-facing persp  0.07%
+    gt   r3: persp  97.6%   weak  97.8%   | back-facing persp  0.08%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +12.57 deg [95% CI +12.30, +12.84]
+    H vs D-pred-part-persp-r3    : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +12.50 deg [95% CI +12.23, +12.77]
+    H vs D-pred-orc-persp-r3     : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +10.95 deg [95% CI +10.74, +11.16]
+    H vs D-gt-orc-persp-r2       : head wins 610, loses 30, sign test p=1.34e-141, mean(other - H) +4.15 deg [95% CI +3.95, +4.35]
+    H vs D-gt-smooth-persp-r2    : head wins 619, loses 21, sign test p=5.42e-154, mean(other - H) +4.69 deg [95% CI +4.45, +4.92]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  3827649 | H 5.8/4.9/2.4 | Dpart 15.3/14.2/4.1 | Dsmooth 15.2/14.2/4.1 | Dorc 14.4/13.3/4.0 | GTorc 12.7/12.0/3.0 | GTsmooth 13.6/12.9/3.1 
+    arms       n=  1406401 | H 10.1/9.0/3.5 | Dpart 22.9/21.3/6.4 | Dsmooth 22.9/21.4/6.3 | Dorc 21.4/19.9/6.1 | GTorc 14.2/13.5/3.3 | GTsmooth 14.6/14.0/3.3 
+    legs       n=  3754290 | H 5.1/4.5/1.9 | Dpart 12.6/11.8/3.2 | Dsmooth 12.7/11.9/3.2 | Dorc 12.2/11.4/3.1 | GTorc 9.1/8.8/1.8 | GTsmooth 9.4/9.0/1.8 
+    hands_feet n=   916286 | H 11.7/9.6/5.4 | Dpart 61.3/50.5/31.3 | Dsmooth 61.7/50.9/31.5 | Dorc 51.1/43.5/23.4 | GTorc 12.1/11.4/2.8 | GTsmooth 12.9/12.3/3.0 
+    head       n=  1193437 | H 5.4/4.6/2.1 | Dpart 12.9/12.0/3.6 | Dsmooth 13.0/12.1/3.6 | Dorc 12.9/11.9/3.6 | GTorc 7.0/6.8/1.3 | GTsmooth 7.1/6.8/1.3 
+    d<4        n=  1721441 | H 8.7/7.1/4.1 | Dpart 25.5/21.1/12.2 | Dsmooth 25.6/21.3/12.2 | Dorc 22.3/18.8/10.0 | GTorc 8.3/7.5/2.5 | GTsmooth 8.8/8.1/2.6 
+    d4-12      n=  4673190 | H 6.7/5.9/2.6 | Dpart 18.2/16.3/6.4 | Dsmooth 18.2/16.4/6.4 | Dorc 16.8/15.2/5.7 | GTorc 9.1/8.6/2.2 | GTsmooth 9.4/8.9/2.2 
+    d>=12      n=  4703432 | H 5.6/4.9/2.1 | Dpart 17.1/16.3/3.9 | Dsmooth 17.2/16.3/3.9 | Dorc 16.3/15.4/3.8 | GTorc 13.8/13.4/2.7 | GTsmooth 14.7/14.2/2.7 
+======================================================================================================================================================
+S2_dp_w_B_ckpt_120000.npz   split S2   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_w_B/ckpt_120000.pt   images 640
+  SANITY indomain_probe (native decode, pooled mean): geo_e2e 14.803  geo_oracle 13.949  n=640
+  pixels: GT fg 13282697  -> no hidden 13270323 (99.9%)  -> GT stencil 11447641 (86.2%)  -> +pred stencil 10907989 (82.1%)  -> Omega (all solves finite) 10889980 (82.0%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |  13.18   8.33  18.89 |  11.34   7.23  17.57 |   5.68   2.67   8.09 ||  18.00   9.68  17.72
+  H-orc  head, GT-part gather        |  12.78   8.33  18.73 |  11.29   7.23  17.43 |   5.02   2.67   7.97 ||  17.47   9.61  16.89
+  D-pred-orc persp r3                |  22.03  14.23  43.21 |  19.50  13.11  40.03 |   8.06   3.47  13.49 ||  25.25  19.24  29.64
+  D-pred-part persp r3               |  24.67  14.33  51.85 |  21.54  13.21  47.29 |   9.77   3.53  14.81 ||  29.14  21.00  35.87
+  D-pred-smooth persp r3             |  24.72  14.35  51.97 |  21.59  13.23  47.43 |   9.79   3.53  14.83 ||  29.20  21.05  35.85
+  D-pred-orc WEAK r3                 |  25.33  18.47  46.01 |  22.38  16.81  42.39 |   9.51   4.95  16.85 ||  28.38  22.32  36.87
+  D-pred-smooth WEAK r3              |  28.44  18.87  55.63 |  24.84  17.19  50.81 |  11.46   5.09  18.49 ||  32.69  24.38  42.70
+  D-gt-orc persp r2                  |  11.03   7.81  23.97 |  10.51   7.35  23.31 |   2.45   1.45   5.59 ||  10.87  10.60  13.45
+  D-gt-part persp r2                 |  11.56   7.81  25.15 |  11.06   7.37  24.47 |   2.48   1.45   5.65 ||  11.39  10.92  14.40
+  D-gt-smooth persp r2               |  11.56   7.83  25.17 |  11.05   7.37  24.49 |   2.48   1.45   5.63 ||  11.39  10.93  14.27
+  D-gt-orc WEAK r2                   |  16.38  14.07  30.29 |  15.06  12.71  28.85 |   5.00   3.73  10.75 ||  16.32  14.67  25.12
+  D-gt-smooth WEAK r2                |  17.16  14.21  32.01 |  15.84  12.83  30.61 |   5.05   3.77  10.81 ||  17.08  15.18  26.88
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  23.03  r2  22.36  r3  22.03
+    D-pred-part  : r1  25.54  r2  24.92  r3  24.67
+    D-pred-smooth: r1  25.63  r2  24.99  r3  24.72
+    D-gt-orc   : r1  11.25  r2  11.03  r3  11.17
+    D-gt-part  : r1  11.80  r2  11.56  r3  11.70
+    D-gt-smooth: r1  11.79  r2  11.56  r3  11.70
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  98.9%   weak  98.9%   | back-facing persp  5.50%
+    pred r2: persp  98.8%   weak  98.7%   | back-facing persp  5.51%
+    pred r3: persp  98.7%   weak  98.6%   | back-facing persp  5.55%
+    gt   r1: persp  97.6%   weak  97.8%   | back-facing persp  0.06%
+    gt   r2: persp  97.6%   weak  97.8%   | back-facing persp  0.07%
+    gt   r3: persp  97.6%   weak  97.8%   | back-facing persp  0.08%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 615, loses 25, sign test p=2.61e-148, mean(other - H) +11.20 deg [95% CI +10.65, +11.74]
+    H vs D-pred-part-persp-r3    : head wins 614, loses 26, sign test p=6.20e-147, mean(other - H) +11.14 deg [95% CI +10.59, +11.68]
+    H vs D-pred-orc-persp-r3     : head wins 598, loses 42, sign test p=6.14e-127, mean(other - H) +7.25 deg [95% CI +6.40, +8.06]
+    H vs D-gt-orc-persp-r2       : head wins 376, loses 264, sign test p=1.09e-05, mean(other - H) -7.13 deg [95% CI -9.43, -4.98]
+    H vs D-gt-smooth-persp-r2    : head wins 397, loses 243, sign test p=1.23e-09, mean(other - H) -6.61 deg [95% CI -8.92, -4.45]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  3781870 | H 10.7/8.9/5.2 | Dpart 18.8/16.7/6.5 | Dsmooth 18.8/16.7/6.5 | Dorc 17.4/15.5/6.0 | GTorc 12.7/12.0/3.1 | GTsmooth 13.6/12.9/3.1 
+    arms       n=  1361765 | H 19.0/17.4/5.8 | Dpart 29.0/26.4/9.0 | Dsmooth 29.0/26.4/9.1 | Dorc 26.3/24.2/7.8 | GTorc 14.2/13.6/3.3 | GTsmooth 14.7/14.0/3.3 
+    legs       n=  3671226 | H 12.9/11.3/5.6 | Dpart 17.9/16.0/6.3 | Dsmooth 17.9/16.0/6.3 | Dorc 16.5/14.8/5.6 | GTorc 9.1/8.8/1.8 | GTsmooth 9.4/9.1/1.8 
+    hands_feet n=   926087 | H 18.4/14.6/9.4 | Dpart 76.8/62.2/41.7 | Dsmooth 77.2/62.6/41.8 | Dorc 61.6/52.2/29.0 | GTorc 12.1/11.4/2.8 | GTsmooth 12.9/12.2/2.9 
+    head       n=  1149032 | H 11.1/9.6/4.6 | Dpart 18.6/16.6/6.6 | Dsmooth 18.7/16.7/6.7 | Dorc 17.7/15.8/6.2 | GTorc 7.0/6.8/1.2 | GTsmooth 7.1/6.9/1.2 
+    d<4        n=  1668983 | H 18.4/15.1/9.2 | Dpart 36.2/29.5/18.7 | Dsmooth 36.3/29.6/18.7 | Dorc 30.5/25.4/14.2 | GTorc 8.3/7.6/2.5 | GTsmooth 8.9/8.1/2.6 
+    d4-12      n=  4573852 | H 14.5/12.5/6.2 | Dpart 25.7/22.1/11.0 | Dsmooth 25.8/22.2/11.0 | Dorc 22.7/19.9/8.9 | GTorc 9.1/8.6/2.2 | GTsmooth 9.4/8.9/2.2 
+    d>=12      n=  4647145 | H 10.0/8.8/3.9 | Dpart 19.5/18.1/5.4 | Dsmooth 19.5/18.1/5.4 | Dorc 18.3/17.0/5.1 | GTorc 13.9/13.4/2.7 | GTsmooth 14.7/14.2/2.7 
+======================================================================================================================================================
+S2_dp_w_MF_ckpt_003000.npz   split S2   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_w_MF/ckpt_003000.pt   images 640
+  SANITY indomain_probe (native decode, pooled mean): geo_e2e 8.244  geo_oracle 7.640  n=640
+  pixels: GT fg 13282697  -> no hidden 13270323 (99.9%)  -> GT stencil 11447641 (86.2%)  -> +pred stencil 10985717 (82.7%)  -> Omega (all solves finite) 10979562 (82.7%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   7.45   6.13  12.67 |   6.41   5.19  11.49 |   2.95   2.07   6.09 ||   7.58   7.29   9.60
+  H-orc  head, GT-part gather        |   7.33   6.11  12.57 |   6.33   5.17  11.39 |   2.87   2.07   6.05 ||   7.45   7.18   9.36
+  D-pred-orc persp r3                |  20.09  15.81  37.55 |  18.31  14.45  35.69 |   6.29   3.85  12.55 ||  20.51  19.22  26.17
+  D-pred-part persp r3               |  21.65  15.97  41.57 |  19.74  14.61  39.57 |   6.77   3.91  13.01 ||  22.21  20.33  30.26
+  D-pred-smooth persp r3             |  21.73  15.99  41.77 |  19.82  14.63  39.81 |   6.79   3.91  13.01 ||  22.30  20.43  30.22
+  D-pred-orc WEAK r3                 |  23.33  19.71  41.25 |  21.13  17.87  38.95 |   7.71   5.13  15.73 ||  23.72  21.88  31.18
+  D-pred-smooth WEAK r3              |  25.41  20.21  46.83 |  23.07  18.31  44.45 |   8.28   5.27  16.31 ||  25.95  23.45  35.55
+  D-gt-orc persp r2                  |  11.00   7.77  23.95 |  10.49   7.33  23.29 |   2.45   1.45   5.57 ||  10.86  10.57  13.36
+  D-gt-part persp r2                 |  11.53   7.79  25.09 |  11.02   7.33  24.41 |   2.48   1.45   5.63 ||  11.38  10.91  14.36
+  D-gt-smooth persp r2               |  11.53   7.79  25.11 |  11.02   7.33  24.43 |   2.47   1.45   5.61 ||  11.38  10.93  14.30
+  D-gt-orc WEAK r2                   |  16.37  14.05  30.27 |  15.04  12.69  28.83 |   5.00   3.73  10.75 ||  16.31  14.62  25.20
+  D-gt-smooth WEAK r2                |  17.15  14.19  31.99 |  15.83  12.81  30.57 |   5.05   3.77  10.79 ||  17.07  15.10  27.02
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  21.47  r2  20.64  r3  20.09
+    D-pred-part  : r1  22.99  r2  22.16  r3  21.65
+    D-pred-smooth: r1  23.10  r2  22.25  r3  21.73
+    D-gt-orc   : r1  11.22  r2  11.00  r3  11.15
+    D-gt-part  : r1  11.71  r2  11.53  r3  11.74
+    D-gt-smooth: r1  11.71  r2  11.53  r3  11.73
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  98.9%   weak  98.9%   | back-facing persp  1.84%
+    pred r2: persp  98.8%   weak  98.8%   | back-facing persp  1.82%
+    pred r3: persp  98.7%   weak  98.7%   | back-facing persp  1.81%
+    gt   r1: persp  97.6%   weak  97.8%   | back-facing persp  0.06%
+    gt   r2: persp  97.6%   weak  97.8%   | back-facing persp  0.07%
+    gt   r3: persp  97.6%   weak  97.8%   | back-facing persp  0.09%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +14.71 deg [95% CI +14.35, +15.10]
+    H vs D-pred-part-persp-r3    : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +14.62 deg [95% CI +14.26, +15.01]
+    H vs D-pred-orc-persp-r3     : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +12.93 deg [95% CI +12.67, +13.20]
+    H vs D-gt-orc-persp-r2       : head wins 593, loses 47, sign test p=2.53e-121, mean(other - H) +3.27 deg [95% CI +3.08, +3.46]
+    H vs D-gt-smooth-persp-r2    : head wins 611, loses 29, sign test p=6.54e-143, mean(other - H) +3.79 deg [95% CI +3.58, +4.00]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  3763584 | H 6.9/5.8/2.9 | Dpart 17.5/16.2/4.9 | Dsmooth 17.5/16.2/4.9 | Dorc 16.6/15.3/4.8 | GTorc 12.6/12.0/3.0 | GTsmooth 13.5/12.8/3.0 
+    arms       n=  1404931 | H 11.4/10.1/4.0 | Dpart 28.9/26.6/8.6 | Dsmooth 29.0/26.7/8.6 | Dorc 26.0/23.8/8.1 | GTorc 14.2/13.5/3.3 | GTsmooth 14.7/14.0/3.3 
+    legs       n=  3687921 | H 5.9/5.2/2.2 | Dpart 18.4/17.2/4.8 | Dsmooth 18.4/17.2/4.8 | Dorc 17.3/16.1/4.6 | GTorc 9.1/8.8/1.8 | GTsmooth 9.4/9.1/1.8 
+    hands_feet n=   932470 | H 11.8/9.9/5.2 | Dpart 46.7/39.6/21.4 | Dsmooth 47.2/40.1/21.6 | Dorc 40.8/35.0/17.6 | GTorc 12.1/11.4/2.8 | GTsmooth 13.0/12.3/3.0 
+    head       n=  1190656 | H 5.9/5.0/2.4 | Dpart 16.7/15.3/5.1 | Dsmooth 16.9/15.4/5.1 | Dorc 16.6/15.1/5.0 | GTorc 7.0/6.8/1.3 | GTsmooth 7.1/6.9/1.3 
+    d<4        n=  1704458 | H 9.3/7.6/4.4 | Dpart 28.4/24.1/12.6 | Dsmooth 28.6/24.3/12.6 | Dorc 25.6/21.8/11.1 | GTorc 8.3/7.6/2.5 | GTsmooth 8.9/8.2/2.6 
+    d4-12      n=  4613929 | H 7.6/6.6/2.9 | Dpart 20.6/18.7/6.7 | Dsmooth 20.7/18.8/6.7 | Dorc 19.2/17.4/6.3 | GTorc 9.1/8.6/2.2 | GTsmooth 9.4/8.9/2.2 
+    d>=12      n=  4661175 | H 6.6/5.8/2.5 | Dpart 20.2/19.2/4.7 | Dsmooth 20.3/19.2/4.8 | Dorc 18.9/17.9/4.6 | GTorc 13.9/13.4/2.7 | GTsmooth 14.6/14.2/2.7 
+======================================================================================================================================================
+S2_dp_w_M_ckpt_120000.npz   split S2   ckpt /home/u6ga/raguler.u6ga/data/bedlam2/dp_runs/dp_w_M/ckpt_120000.pt   images 640
+  SANITY indomain_probe (native decode, pooled mean): geo_e2e 6.890  geo_oracle 6.503  n=640
+  pixels: GT fg 13282697  -> no hidden 13270323 (99.9%)  -> GT stencil 11447641 (86.2%)  -> +pred stencil 11155125 (84.0%)  -> Omega (all solves finite) 11140662 (83.9%)
+  main table (pixel-pooled over Omega; per-image = mean of per-image means); degrees
+  method                             | geodesic mean/med/p90 | normal mean/med/p90  | twist mean/med/p90   || per-image geo mean/med/p90
+  H  rotation head (pred-part gather) |   6.22   5.07  10.39 |   5.35   4.31   9.41 |   2.46   1.73   5.05 ||   6.35   5.93   8.51
+  H-orc  head, GT-part gather        |   6.16   5.07  10.39 |   5.31   4.31   9.41 |   2.42   1.73   5.05 ||   6.28   5.89   8.42
+  D-pred-orc persp r3                |  16.10  11.83  30.83 |  14.74  10.83  29.61 |   4.90   2.85   9.37 ||  16.20  15.39  20.18
+  D-pred-part persp r3               |  17.10  11.89  32.93 |  15.65  10.87  31.67 |   5.21   2.87   9.51 ||  17.24  16.16  21.91
+  D-pred-smooth persp r3             |  17.15  11.89  33.09 |  15.70  10.89  31.83 |   5.22   2.87   9.51 ||  17.30  16.23  22.01
+  D-pred-orc WEAK r3                 |  20.01  16.51  35.41 |  18.13  14.95  33.65 |   6.60   4.39  13.13 ||  20.12  18.37  27.92
+  D-pred-smooth WEAK r3              |  21.45  16.77  38.73 |  19.47  15.17  36.99 |   6.99   4.45  13.37 ||  21.61  19.32  30.68
+  D-gt-orc persp r2                  |  10.98   7.77  23.91 |  10.47   7.31  23.25 |   2.45   1.45   5.59 ||  10.85  10.57  13.39
+  D-gt-part persp r2                 |  11.50   7.77  25.03 |  10.99   7.33  24.35 |   2.48   1.45   5.63 ||  11.35  10.89  14.26
+  D-gt-smooth persp r2               |  11.49   7.79  25.05 |  10.98   7.33  24.37 |   2.47   1.45   5.63 ||  11.34  10.92  14.22
+  D-gt-orc WEAK r2                   |  16.35  14.05  30.23 |  15.02  12.69  28.79 |   5.00   3.73  10.75 ||  16.29  14.62  25.13
+  D-gt-smooth WEAK r2                |  17.12  14.19  31.93 |  15.80  12.79  30.51 |   5.05   3.77  10.81 ||  17.06  15.11  26.93
+  stencil sweep (pixel-pooled mean geodesic, persp):
+    D-pred-orc   : r1  17.53  r2  16.60  r3  16.10
+    D-pred-part  : r1  18.53  r2  17.63  r3  17.10
+    D-pred-smooth: r1  18.63  r2  17.69  r3  17.15
+    D-gt-orc   : r1  11.20  r2  10.98  r3  11.13
+    D-gt-part  : r1  11.73  r2  11.50  r3  11.66
+    D-gt-smooth: r1  11.72  r2  11.49  r3  11.66
+  two-fold ambiguity: share of Omega where the two solutions differ by >30 deg | derived normal back-facing
+    pred r1: persp  98.7%   weak  98.7%   | back-facing persp  1.71%
+    pred r2: persp  98.5%   weak  98.5%   | back-facing persp  1.69%
+    pred r3: persp  98.4%   weak  98.4%   | back-facing persp  1.67%
+    gt   r1: persp  97.6%   weak  97.8%   | back-facing persp  0.06%
+    gt   r2: persp  97.6%   weak  97.8%   | back-facing persp  0.07%
+    gt   r3: persp  97.6%   weak  97.8%   | back-facing persp  0.08%
+  paired per image (per-image mean geodesic): wins = head better
+    H vs D-pred-smooth-persp-r3  : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +10.96 deg [95% CI +10.70, +11.22]
+    H vs D-pred-part-persp-r3    : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +10.90 deg [95% CI +10.64, +11.16]
+    H vs D-pred-orc-persp-r3     : head wins 640, loses 0, sign test p=4.38e-193, mean(other - H) +9.86 deg [95% CI +9.66, +10.05]
+    H vs D-gt-orc-persp-r2       : head wins 614, loses 26, sign test p=6.20e-147, mean(other - H) +4.50 deg [95% CI +4.30, +4.69]
+    H vs D-gt-smooth-persp-r2    : head wins 621, loses 19, sign test p=5.89e-157, mean(other - H) +5.00 deg [95% CI +4.78, +5.22]
+  breakdown (pixel-pooled mean geodesic / normal / twist; n px):
+    torso      n=  3840501 | H 5.6/4.7/2.4 | Dpart 15.1/14.0/4.0 | Dsmooth 15.1/14.0/4.0 | Dorc 14.3/13.3/4.0 | GTorc 12.6/12.0/3.0 | GTsmooth 13.5/12.8/3.1 
+    arms       n=  1418652 | H 9.3/8.3/3.2 | Dpart 22.2/20.7/6.1 | Dsmooth 22.2/20.7/6.1 | Dorc 20.7/19.2/5.8 | GTorc 14.1/13.5/3.3 | GTsmooth 14.6/13.9/3.3 
+    legs       n=  3768121 | H 4.9/4.3/1.9 | Dpart 12.3/11.6/3.1 | Dsmooth 12.4/11.6/3.1 | Dorc 11.9/11.2/3.1 | GTorc 9.1/8.7/1.8 | GTsmooth 9.4/9.0/1.8 
+    hands_feet n=   917660 | H 10.9/9.0/4.9 | Dpart 42.8/36.4/19.5 | Dsmooth 43.2/36.8/19.7 | Dorc 37.9/32.5/16.4 | GTorc 12.1/11.4/2.8 | GTsmooth 13.0/12.3/3.0 
+    head       n=  1195728 | H 5.1/4.5/1.9 | Dpart 12.8/11.8/3.5 | Dsmooth 12.8/11.9/3.5 | Dorc 12.7/11.8/3.5 | GTorc 7.0/6.8/1.3 | GTsmooth 7.1/6.8/1.3 
+    d<4        n=  1727960 | H 8.1/6.6/3.8 | Dpart 21.6/18.3/9.8 | Dsmooth 21.8/18.4/9.8 | Dorc 19.6/16.6/8.7 | GTorc 8.3/7.5/2.5 | GTsmooth 8.8/8.1/2.6 
+    d4-12      n=  4693268 | H 6.4/5.6/2.4 | Dpart 15.7/14.3/5.0 | Dsmooth 15.7/14.3/5.0 | Dorc 14.9/13.6/4.7 | GTorc 9.1/8.6/2.2 | GTsmooth 9.3/8.9/2.2 
+    d>=12      n=  4719434 | H 5.4/4.7/2.0 | Dpart 16.9/16.0/3.8 | Dsmooth 16.9/16.1/3.8 | Dorc 16.0/15.2/3.7 | GTorc 13.8/13.4/2.7 | GTsmooth 14.6/14.1/2.7 
+======================================================================================================================================================
+CROSS-CHECKPOINT (pixel-pooled over each run's Omega; mean geodesic / normal / twist; RESULTS-statistic reproduction in brackets)
+  S1 dp_csc_C/ckpt_025000.pt      [eval_512 6.77 ] | H 8.03/6.69/3.49 | Dpred-smooth 28.73/25.63/10.02 | Dpred-orc 25.84/22.90/9.23 | Dgt-orc 15.53/14.63/3.87 | H wins 503/512
+  S1 dp_v21_M/ckpt_120000.pt      [eval_512 7.60 ] | H 9.04/7.53/3.98 | Dpred-smooth 28.89/25.75/10.40 | Dpred-orc 25.37/22.56/9.11 | Dgt-orc 15.55/14.65/3.88 | H wins 508/512
+  S1 dp_w_B/ckpt_120000.pt        [eval_512 6.98 ] | H 8.40/6.98/3.70 | Dpred-smooth 28.39/25.27/10.25 | Dpred-orc 25.24/22.48/9.00 | Dgt-orc 15.53/14.64/3.87 | H wins 510/512
+  S1 dp_w_MF/ckpt_003000.pt       [eval_512 7.32 ] | H 8.96/7.40/4.02 | Dpred-smooth 28.07/25.00/9.89 | Dpred-orc 25.14/22.26/9.00 | Dgt-orc 15.54/14.64/3.87 | H wins 506/512
+  S1 dp_w_M/ckpt_120000.pt        [eval_512 6.86 ] | H 8.46/6.98/3.81 | Dpred-smooth 27.47/24.49/9.61 | Dpred-orc 24.50/21.73/8.72 | Dgt-orc 15.54/14.64/3.87 | H wins 507/512
+  S2 dp_csc_C/ckpt_025000.pt      [probe 6.40    ] | H 5.77/4.98/2.26 | Dpred-smooth 18.42/16.89/5.54 | Dpred-orc 17.41/15.93/5.30 | Dgt-orc 10.98/10.47/2.45 | H wins 640/640
+  S2 dp_v21_M/ckpt_120000.pt      [probe 7.31    ] | H 6.55/5.65/2.59 | Dpred-smooth 18.94/17.12/6.26 | Dpred-orc 17.42/15.86/5.55 | Dgt-orc 10.99/10.48/2.45 | H wins 640/640
+  S2 dp_w_B/ckpt_120000.pt        [probe 14.80   ] | H 13.18/11.34/5.68 | Dpred-smooth 24.72/21.59/9.79 | Dpred-orc 22.03/19.50/8.06 | Dgt-orc 11.03/10.51/2.45 | H wins 615/640
+  S2 dp_w_MF/ckpt_003000.pt       [probe 8.24    ] | H 7.45/6.41/2.95 | Dpred-smooth 21.73/19.82/6.79 | Dpred-orc 20.09/18.31/6.29 | Dgt-orc 11.00/10.49/2.45 | H wins 640/640
+  S2 dp_w_M/ckpt_120000.pt        [probe 6.89    ] | H 6.22/5.35/2.46 | Dpred-smooth 17.15/15.70/5.22 | Dpred-orc 16.10/14.74/4.90 | Dgt-orc 10.98/10.47/2.45 | H wins 640/640

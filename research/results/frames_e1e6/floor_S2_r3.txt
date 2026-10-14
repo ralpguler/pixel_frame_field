@@ -1,0 +1,12 @@
+FLOOR S2 r=3: 640 images, 11447641 px
+  per-pixel polar frame of the TRUE posed surface (definition floor) | geo   3.69   2.22   6.90 | normal   3.25   1.75   6.53 | twist   1.06   0.59   2.28
+  derivation, TRUE stretch removed, oracle sign                      | geo   3.67   2.25   6.96 | normal   3.22   1.78   6.59 | twist   1.07   0.59   2.30
+  derivation from GT correspondence, oracle sign (= E1 floor)        | geo  11.19   7.99  24.10 | normal  10.68   7.54  23.44 | twist   2.46   1.44   5.60
+  anisotropy kappa = sqrt(lmax/lmin): median 1.092  p10 1.027  p90 1.321  share>1.1 46.4%  share>1.25 15.3%
+    kappa [1.00,1.05):  24.9% px | D geo   4.71 normal   4.63 twist  0.62 | Dstr geo  3.10
+    kappa [1.05,1.10):  28.6% px | D geo   7.67 normal   7.44 twist  1.36 | Dstr geo  3.05
+    kappa [1.10,1.20):  25.3% px | D geo  11.80 normal  11.32 twist  2.48 | Dstr geo  3.21
+    kappa [1.20,1.40):  14.6% px | D geo  18.78 normal  17.82 twist  4.55 | Dstr geo  4.03
+    kappa [1.40,99.00):   6.5% px | D geo  31.96 normal  29.55 twist  9.59 | Dstr geo  9.42
+  perspective linearisation |A_n-(1/z)M Fp|/|A_n|: median 8.08e-04 p99 4.90e-03
+  TRUE-geometry ambiguity (R_gt vs its exact Necker partner): >30 deg on 91.1% of px, median 79.8 deg

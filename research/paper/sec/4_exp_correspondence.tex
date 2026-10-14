@@ -1,0 +1,175 @@
+% Provenance: every number traces to paper/RESULTS.md or the job log in the trailing comment.
+\section{Experiments: correspondence}
+\label{sec:exp_corr}
+
+\subsection{Protocol}
+\label{sec:exp_setup}
+
+On DensePose-COCO we use the official minival annotations and GPS
+implementation~\cite{guler2018densepose,wu2019detectron2}, reporting AP over
+$\mathrm{OGPS}=0.50\!:\!0.95$. Because this paper studies the correspondence stage in isolation,
+our protocol supplies boxes rather than detections: every annotated ground-truth box becomes a
+score-1 detection ($2243$ instances, $1508$ images); for the one model we ran under both protocols
+they agree closely ($0.633$ vs.\ $0.624$ with Faster R-CNN boxes), and we do not generalise from a
+single pair. On $512$ held-out BEDLAM2~\cite{tesch2025bedlam2} instances we report
+\emph{geo\_e2e}, the mean geodesic frame error with the rotation channel gathered by the
+\emph{predicted} part, so part misclassification is charged as at deployment (the ground-truth
+gather, \emph{geo\_oracle}, is optimistic by $0.4$--$0.7^\circ$ and is never a headline), and
+\emph{surface error}, the \emph{median} per-pixel template-space distance; that split is defined at
+instance level with no documented sequence-level separation rule, unlike the occlusion probe, which
+uses $640$ instances from the held-out MAMMA shards of \cref{sec:data}. All rows share the network
+and recipe above: \textbf{W-B} trains on BEDLAM2 only, \textbf{W-M} on BEDLAM2$+$MAMMA,
+\textbf{W-J} also interleaves COCO through the synthetic stage, \textbf{W-MF} is W-M plus $3$k
+steps of the joint COCO fine-tune, and \textbf{F0} is an earlier checkpoint of the same family,
+trained before the sequence holdout, used downstream. The CSC arms A/C/D/E are $25$k-step
+fine-tunes from an older $120$k checkpoint outside the W-$*$ lineage (internal run names; there is
+no B). Two things we do not have and do not substitute for: no training GPU-hours or inference
+latency were measured, and \textbf{every number here comes from a single training run}, so we
+report no variance and avoid calling any difference ``noise'' or ``free''.
+% dpeval/eval_vitl_final.txt: GT-box 0.633 / DETECTOR-v2 0.624.  RESULTS S2b: 7.30 vs 7.95 @120k
+
+\begin{table}[!tb]
+\centering\footnotesize\renewcommand{\arraystretch}{0.94}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & & COCO & BEDLAM & occl.\\
+Model & Rot. & AP & geo$^\circ$ & geo$^\circ$ \\
+\midrule
+\multicolumn{5}{@{}l}{\emph{ours, IUV only}}\\
+DINOv3-DPT, synthetic          & --         & 0.633 & --- & ---\\
+\emph{\ \ same, detector boxes} & --        & 0.624 & --- & ---\\
+\ \ + COCO ft                  & --         & 0.732 & --- & ---\\
+\ \ + joint COCO/BEDLAM ft     & --         & 0.738 & --- & ---\\
+\midrule
+\multicolumn{5}{@{}l}{\emph{ours, with the frame field}}\\
+W-B (BEDLAM only)              & \checkmark & 0.613 & 6.98 & 14.80\\
+W-M (\,$+$\,MAMMA)             & \checkmark & 0.621 & \textbf{6.86} & \textbf{6.89}\\
+W-J (\,$+$\,COCO interleaved)  & \checkmark & ---   & 7.18 & 10.77\\
+\textbf{W-MF @3k} (\,$+$\,joint ft) & \checkmark & \textbf{0.741} & --- & 8.24\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{DensePose-COCO GPS AP (ground-truth boxes unless noted), BEDLAM-val and held-out
+occlusion error}; one architecture throughout. \textbf{There is no external row}: no published
+DensePose model was re-scored under this harness, so we compare only with our own $IUV$-only
+checkpoints and claim no state of the art; $0.741$ is the maximum of a checkpoint sweep on this
+same minival. W-B vs.\ W-M is matched-recipe, its only training variable contact data; blanks were
+not run. F0 predates the holdout, so its $10.62^\circ$ is not a held-out number. Single run per
+row.}
+\label{tab:coco}
+\end{table}
+
+\subsection{Correspondence accuracy}
+\label{sec:exp_main}
+
+\cref{tab:coco} gives the headline: \textbf{W-MF} reaches \textbf{0.741 GPS AP}, $0.3$ AP points
+above the strongest $IUV$-only checkpoint of the same architecture and $12.0$ above the same recipe
+without its COCO fine-tune, while additionally predicting a surface frame at every pixel. Three
+qualifications belong here rather than in a rebuttal. \emph{Selection:} the number is the maximum
+of a COCO-GPS sweep over second-stage checkpoints, on the set it is reported on
+($0.713$/$0.729$/$\mathbf{0.741}$/$0.737$/$0.734$ at $1$/$2$/$3$/$5$/$10$k), so the selection bias
+is of the same order as the margin and we read the table as \emph{parity plus an extra output}, not
+a correspondence win. \emph{The oriented output is not free at matched step:} \cref{tab:recipe}
+charges it $2.1$ AP points --- $0.3$ for a bundle of three simultaneous changes we cannot separate,
+$1.8$ for the per-part rotation head, which serves only rotation and which ships. \emph{The
+fine-tune dominates every contribution here:} $12.0$ of the AP comes from the short joint COCO
+stage, which is not ours, while every component this paper contributes moves single points.
+% mf-gate-5702500.out
+
+\begin{table}[!tb]
+\centering\footnotesize\renewcommand{\arraystretch}{0.94}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Cumulative change & AP & $\Delta$ \\
+\midrule
+IUV-only, flat backbone LR              & 0.633 & --    \\
++ rotation task, $-$hflip, factorised head & 0.630 & $-0.3$ \\
++ per-part rotation head                & 0.612 & $-1.8$ \\
++ LLRD backbone LR (base $3\!\cdot\!10^{-4}$) & 0.622 & $+1.0$ \\
++ base LR $10^{-3}$ (synthetic optimum) & 0.588 & $-3.4$ \\
++ 58k $\rightarrow$ 120k pure synthetic & 0.578 & $-1.0$ \\
++ MAMMA 50/50                           & 0.565 & $-1.3$ \\
+\bottomrule
+\end{tabular}
+\caption{\textbf{Recipe diagnosis}, not a component ablation; $\Delta$ in AP points. Rows 1--5 are
+matched at step 58k; the last two continue the run to 120k and add occlusion data, so they are not
+step-matched, and the last is superseded --- at a corrected learning rate occlusion data is worth
+$+0.008$ AP, the opposite sign (\cref{tab:coco}). Rows 2--3 are both attributable to the oriented
+output and sum to $-2.1$; row 2 bundles three changes and cannot be decomposed. Single run per
+row.}
+\label{tab:recipe}
+\end{table}
+
+Read as a diagnosis, \cref{tab:recipe} says the deficit our oriented lineage showed on COCO was not
+the second task: the synthetic-optimal base learning rate costs $3.4$ AP points and prolonged
+pure-synthetic training a further $1.0$. Synthetic rotation error meanwhile improves monotonically
+down the same ladder under an oracle readout ($9.01^\circ\!\rightarrow\!7.86^\circ$, supp.), so
+real AP and synthetic geodesic error \emph{anti-correlate} along the learning-rate axis and
+layer-wise decay at base $3\!\cdot\!10^{-4}$ is the only step improving both. We had checked that
+decision with the sparse point-accuracy proxy the training loop already computed, and it moved by
+$0.6$ points where GPS AP moved by $3.4$: different statistics, so the ratio means nothing, but one
+crossed a decision threshold and the other did not. \emph{Gate recipe decisions on GPS, not on a
+sparse proxy.}
+
+\subsection{Charts, CSC, occlusion data and staging}
+\label{sec:exp_csc}
+
+\begin{table}[!tb]
+\centering\scriptsize\renewcommand{\arraystretch}{0.94}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lcccc}
+\toprule
+System & AP & surf (mm) & h+f (mm) & geo ($^\circ$) \\
+\midrule
+baseline (\textsc{v1} charts)      & 0.565 & 12.54 & 92.58$^{*}$ & ---\\
+A\; \textsc{v2} charts, no CSC     & 0.552 & 10.52 & 24.81 & 6.88\\
+\textbf{C\; + CSC (GT gather)}     & \textbf{0.568} & \textbf{8.18} & 13.47 & \textbf{6.77}\\
+D\; + CSC (argmax gather)          & 0.563 & 8.22  & \textbf{13.46} & 6.90\\
+E\; + CSC (soft top-3 gather)      & 0.560 & 8.23  & 13.87 & 6.87\\
+\bottomrule
+\end{tabular}
+\caption{\textbf{CSC ablation}, $25$k fine-tuning steps from a common checkpoint. ``surf'' is
+\emph{median} template-space surface error on BEDLAM-val, ``h+f'' the same on hands and feet,
+``geo'' end-to-end rotation error. $^{*}$The baseline predicts \textsc{v1} coordinates but is
+scored against \textsc{v2} ground truth, so \emph{every} column of that row is
+convention-mismatched; row A is the comparison point we use. The common checkpoint is the
+broken-LR $120$k model of \cref{tab:recipe} (see text).}
+\label{tab:csc}
+\end{table}
+
+On what the chart repair is worth in AP we cannot isolate it: the one near-matched comparison is
+\cref{tab:csc}'s baseline ($0.565$, \textsc{v1}) against row A ($0.552$, \textsc{v2}, same losses),
+\emph{negative} by $1.3$ AP points --- but row A carries $25$k additional pure-synthetic steps that
+\cref{tab:recipe} shows cost AP on their own, and we did not run the \textsc{v1} control on that
+schedule. A different quantity is often confused with it: the same checkpoint scores $0.568$ with
+the \textsc{v2}$\to$\textsc{v1} remap and $0.521$ without, so $4.7$ AP points measure the necessity
+of the remap, not the benefit of the re-flattening. The chart contribution is thus a correctness
+result. Supervising correspondences in metres cuts median surface error from
+$10.52$ to $8.18$\,mm ($-22\%$) and hands/feet error from $24.81$ to $13.47$\,mm
+($\mathbf{-46\%}$), and halves the seam-break rate --- the fraction of physically continuous part
+boundaries across which the predicted canonical map jumps by more than $30$\,mm --- from $3.08\%$
+to $1.47\%$. It also acts as a sim2real regulariser, finishing $1.6$ AP points above row A on COCO;
+against the checkpoint both were fine-tuned from the same change is $+0.3$, and both belong in the
+reader's hands because the control's own deficit is unexplained. The surface-error result does not
+depend on that ambiguity and is the one we lead with; its residual is a misclassified pixel reading
+a different chart, and rotation error is flat across the ablation ($6.77$--$6.90^\circ$), so the
+part head is the remaining lever. The gather variant barely matters --- $\arg\max$ (D) and a
+renormalised top-$3$ mixture (E) give $0.563$/$0.560$ AP against C's $0.568$ at identical surface
+error --- and we adopt C without claiming a winner. \textbf{One caveat covers the whole ablation}:
+its common checkpoint is the broken-learning-rate $120$k model, not the shipped W-M checkpoint, so
+the CSC loss ships with no on/off comparison inside the shipped recipe.
+% csc-coco-5668430.out; csc-detail-5662139.out
+
+W-B and W-M, finally, share every element of the recipe and differ only in whether multi-person
+contact data is in the mixture. On held-out sequences the difference is $14.80^\circ$ against
+$6.89^\circ$, and it costs nothing elsewhere ($+0.008$ AP on COCO, $-0.12^\circ$ on clean
+synthetic); an earlier version of the comparison at the bad learning rate appeared to show
+occlusion data costing $1.3$ AP points, a recipe artifact whose sign the matched comparison
+reverses. One caveat is structural: the probe is held-out \emph{MAMMA}, in-domain for W-M and an
+entirely unseen synthetic domain for W-B, so the $-7.9^\circ$ measures occlusion supervision
+\emph{and} domain match together --- what we defend is the conjunction, that adding this corpus at
+fixed recipe transfers to sequences it never saw and costs nothing on the two other axes we
+measure. Staging matters as much: interleaving COCO through the synthetic run (W-J) is worse on
+held-out occlusion, and the joint stage buys $12.0$ AP points while giving up $1.35^\circ$ there ---
+a mechanism we did not isolate. We ship two checkpoints accordingly.

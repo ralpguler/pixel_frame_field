@@ -1,0 +1,652 @@
+% =====================================================================
+%  Oriented DensePose -- bibliography
+%  Venue abbreviations follow the CVPR author kit conventions.
+% =====================================================================
+
+@String(PAMI  = {IEEE TPAMI})
+@String(IJCV  = {IJCV})
+@String(CVPR  = {CVPR})
+@String(ICCV  = {ICCV})
+@String(ECCV  = {ECCV})
+@String(NIPS  = {NeurIPS})
+@String(BMVC  = {BMVC})
+@String(TOG   = {ACM TOG})
+@String(TIP   = {IEEE TIP})
+@String(TVCG  = {IEEE TVCG})
+@String(TMM   = {IEEE TMM})
+@String(ACMMM = {ACM MM})
+@String(ICLR  = {ICLR})
+@String(ICML  = {ICML})
+@String(AAAI  = {AAAI})
+@String(CGF   = {Comput. Graph. Forum})
+@String(JMIV  = {J. Math. Imaging Vis.})
+@String(TOMM  = {ACM TOMM})
+
+% ---------------------------------------------------------------------
+%  Dense human correspondence
+% ---------------------------------------------------------------------
+
+@inproceedings{guler2018densepose,
+  title     = {{DensePose}: Dense Human Pose Estimation in the Wild},
+  author    = {G{\"u}ler, R{\i}za Alp and Neverova, Natalia and Kokkinos, Iasonas},
+  booktitle = CVPR,
+  year      = {2018}
+}
+
+@misc{wu2019detectron2,
+  title        = {Detectron2},
+  author       = {Wu, Yuxin and Kirillov, Alexander and Massa, Francisco and Lo, Wan-Yen and Girshick, Ross},
+  howpublished = {\url{https://github.com/facebookresearch/detectron2}},
+  year         = {2019}
+}
+
+@inproceedings{neverova2019slim,
+  title     = {Slim {DensePose}: Thrifty Learning from Sparse Annotations and Motion Cues},
+  author    = {Neverova, Natalia and Thewlis, James and G{\"u}ler, R{\i}za Alp and Kokkinos, Iasonas and Vedaldi, Andrea},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+@inproceedings{neverova2020cse,
+  title     = {Continuous Surface Embeddings},
+  author    = {Neverova, Natalia and Novotny, David and Khalidov, Vasil and Szafraniec, Marc and Labatut, Patrick and Vedaldi, Andrea},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@inproceedings{neverova2021ucm,
+  title     = {Discovering Relationships between Object Categories via Universal Canonical Maps},
+  author    = {Neverova, Natalia and Sanakoyeu, Artsiom and Labatut, Patrick and Novotny, David and Vedaldi, Andrea},
+  booktitle = CVPR,
+  year      = {2021}
+}
+
+@inproceedings{shapovalov2021densepose3d,
+  title     = {{DensePose 3D}: Lifting Canonical Surface Maps of Articulated Objects to the Third Dimension},
+  author    = {Shapovalov, Roman and Novotny, David and Graham, Benjamin and Labatut, Patrick and Vedaldi, Andrea},
+  booktitle = ICCV,
+  year      = {2021}
+}
+
+@inproceedings{ianina2022bodymap,
+  title     = {{BodyMap}: Learning Full-Body Dense Correspondence Map},
+  author    = {Ianina, Anastasia and Sarafianos, Nikolaos and Xu, Yuanlu and Rocco, Ignacio and Tung, Tony},
+  booktitle = CVPR,
+  year      = {2022}
+}
+
+@inproceedings{pozdeev2025densemarks,
+  title     = {{DenseMarks}: Learning Canonical Embeddings for Human Head Images via Point Tracks},
+  author    = {Pozdeev, Dmitrii and Artemov, Alexey and Bhattarai, Ananta R. and Sevastopolsky, Artem},
+  booktitle = ICLR,
+  year      = {2026},
+  note      = {arXiv:2511.02830}
+}
+
+@inproceedings{wang2019nocs,
+  title     = {Normalized Object Coordinate Space for Category-Level {6D} Object Pose and Size Estimation},
+  author    = {Wang, He and Sridhar, Srinath and Huang, Jingwei and Valentin, Julien and Song, Shuran and Guibas, Leonidas J.},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+% ---------------------------------------------------------------------
+%  Body models, datasets, benchmarks
+% ---------------------------------------------------------------------
+
+@article{loper2015smpl,
+  title   = {{SMPL}: A Skinned Multi-Person Linear Model},
+  author  = {Loper, Matthew and Mahmood, Naureen and Romero, Javier and Pons-Moll, Gerard and Black, Michael J.},
+  journal = TOG,
+  volume  = {34},
+  number  = {6},
+  pages   = {248:1--248:16},
+  year    = {2015}
+}
+
+@inproceedings{pavlakos2019smplx,
+  title     = {Expressive Body Capture: {3D} Hands, Face, and Body from a Single Image},
+  author    = {Pavlakos, Georgios and Choutas, Vasileios and Ghorbani, Nima and Bolkart, Timo and Osman, Ahmed A. A. and Tzionas, Dimitrios and Black, Michael J.},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+@inproceedings{varol2017surreal,
+  title     = {Learning from Synthetic Humans},
+  author    = {Varol, G{\"u}l and Romero, Javier and Martin, Xavier and Mahmood, Naureen and Black, Michael J. and Laptev, Ivan and Schmid, Cordelia},
+  booktitle = CVPR,
+  year      = {2017}
+}
+
+@inproceedings{patel2021agora,
+  title     = {{AGORA}: Avatars in Geography Optimized for Regression Analysis},
+  author    = {Patel, Priyanka and Huang, Chun-Hao P. and Tesch, Joachim and Hoffmann, David T. and Tripathi, Shashank and Black, Michael J.},
+  booktitle = CVPR,
+  year      = {2021}
+}
+
+@inproceedings{black2023bedlam,
+  title     = {{BEDLAM}: A Synthetic Dataset of Bodies Exhibiting Detailed Lifelike Animated Motion},
+  author    = {Black, Michael J. and Patel, Priyanka and Tesch, Joachim and Yang, Jinlong},
+  booktitle = CVPR,
+  year      = {2023}
+}
+
+@inproceedings{tesch2025bedlam2,
+  title     = {{BEDLAM2.0}: Synthetic Humans and Cameras in Motion},
+  author    = {Tesch, Joachim and Becherini, Giorgio and Achar, Prerana and Yiannakidis, Anastasios and Kocabas, Muhammed and Patel, Priyanka and Black, Michael J.},
+  booktitle = {NeurIPS Datasets and Benchmarks Track},
+  year      = {2025},
+  note      = {arXiv:2511.14394}
+}
+
+@inproceedings{cuevas2025mamma,
+  title     = {{MAMMA}: Markerless and Automatic Multi-Person Motion Action Capture},
+  author    = {Cuevas-Velasquez, Hanz and Yiannakidis, Anastasios and Shin, Soyong and Becherini, Giorgio and H{\"o}schle, Markus and Tesch, Joachim and Obersat, Taylor and Alexiadis, Tsvetelina and Halilaj, Eni and Black, Michael J.},
+  booktitle = {NeurIPS Datasets and Benchmarks Track},
+  year      = {2025},
+  note      = {arXiv:2506.13040}
+}
+
+@inproceedings{fieraru2020chi3d,
+  title     = {Three-Dimensional Reconstruction of Human Interactions},
+  author    = {Fieraru, Mihai and Zanfir, Mihai and Oneata, Elisabeta and Popa, Alin-Ionut and Olaru, Vlad and Sminchisescu, Cristian},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{yin2023hi4d,
+  title     = {{Hi4D}: {4D} Instance Segmentation of Close Human Interaction},
+  author    = {Yin, Yifei and Guo, Chen and Kaufmann, Manuel and Zarate, Juan Jose and Song, Jie and Hilliges, Otmar},
+  booktitle = CVPR,
+  year      = {2023}
+}
+
+@inproceedings{khirodkar2024harmony4d,
+  title     = {{Harmony4D}: A Video Dataset for In-The-Wild Close Human Interactions},
+  author    = {Khirodkar, Rawal and Song, Jyun-Ting and Cao, Jinkun and Luo, Zhengyi and Kitani, Kris},
+  booktitle = {NeurIPS Datasets and Benchmarks Track},
+  year      = {2024}
+}
+
+@inproceedings{xu2024interx,
+  title     = {{Inter-X}: Towards Versatile Human-Human Interaction Analysis},
+  author    = {Xu, Liang and Lv, Xintao and Yan, Yichao and Jin, Xin and Wu, Shuwen and Xu, Congsheng and Liu, Yifan and Zhou, Yizhou and Rao, Fengyun and Sheng, Xingdong and Liu, Yunhui and Yang, Xiaokang},
+  booktitle = CVPR,
+  year      = {2024}
+}
+
+@inproceedings{lin2014coco,
+  title     = {Microsoft {COCO}: Common Objects in Context},
+  author    = {Lin, Tsung-Yi and Maire, Michael and Belongie, Serge and Hays, James and Perona, Pietro and Ramanan, Deva and Doll{\'a}r, Piotr and Zitnick, C. Lawrence},
+  booktitle = ECCV,
+  year      = {2014}
+}
+
+@inproceedings{liu2016deepfashion,
+  title     = {{DeepFashion}: Powering Robust Clothes Recognition and Retrieval with Rich Annotations},
+  author    = {Liu, Ziwei and Luo, Ping and Qiu, Shi and Wang, Xiaogang and Tang, Xiaoou},
+  booktitle = CVPR,
+  year      = {2016}
+}
+
+% ---------------------------------------------------------------------
+%  Backbones, decoders, generative priors
+% ---------------------------------------------------------------------
+
+@article{dinov3,
+  title   = {{DINOv3}},
+  author  = {Sim{\'e}oni, Oriane and Vo, Huy V. and Seitzer, Maximilian and Baldassarre, Federico and Oquab, Maxime and Jose, Cijo and Khalidov, Vasil and Szafraniec, Marc and Yi, Seungeun and Ramamonjisoa, Micha{\"e}l and Massa, Francisco and Haziza, Daniel and Wehrstedt, Luca and Wang, Jianyuan and Darcet, Timoth{\'e}e and Moutakanni, Th{\'e}o and Sentana, Leonel and Roberts, Claire and Vedaldi, Andrea and Tolan, Jamie and Brandt, John and Couprie, Camille and Mairal, Julien and J{\'e}gou, Herv{\'e} and Labatut, Patrick and Bojanowski, Piotr},
+  journal = {arXiv:2508.10104},
+  year    = {2025}
+}
+
+@inproceedings{ranftl2021dpt,
+  title     = {Vision Transformers for Dense Prediction},
+  author    = {Ranftl, Ren{\'e} and Bochkovskiy, Alexey and Koltun, Vladlen},
+  booktitle = ICCV,
+  year      = {2021}
+}
+
+@inproceedings{rombach2022ldm,
+  title     = {High-Resolution Image Synthesis with Latent Diffusion Models},
+  author    = {Rombach, Robin and Blattmann, Andreas and Lorenz, Dominik and Esser, Patrick and Ommer, Bj{\"o}rn},
+  booktitle = CVPR,
+  year      = {2022}
+}
+
+% ---------------------------------------------------------------------
+%  Dense geometry: depth, normals, scale-invariant losses
+% ---------------------------------------------------------------------
+
+@inproceedings{eigen2015multiscale,
+  title     = {Predicting Depth, Surface Normals and Semantic Labels with a Common Multi-Scale Convolutional Architecture},
+  author    = {Eigen, David and Fergus, Rob},
+  booktitle = ICCV,
+  year      = {2015}
+}
+
+@inproceedings{li2018megadepth,
+  title     = {{MegaDepth}: Learning Single-View Depth Prediction from Internet Photos},
+  author    = {Li, Zhengqi and Snavely, Noah},
+  booktitle = CVPR,
+  year      = {2018}
+}
+
+@article{ranftl2020midas,
+  title   = {Towards Robust Monocular Depth Estimation: Mixing Datasets for Zero-Shot Cross-Dataset Transfer},
+  author  = {Ranftl, Ren{\'e} and Lasinger, Katrin and Hafner, David and Schindler, Konrad and Koltun, Vladlen},
+  journal = PAMI,
+  volume  = {44},
+  number  = {3},
+  pages   = {1623--1637},
+  year    = {2022}
+}
+
+@inproceedings{bae2021nll,
+  title     = {Estimating and Exploiting the Aleatoric Uncertainty in Surface Normal Estimation},
+  author    = {Bae, Gwangbin and Budvytis, Ignas and Cipolla, Roberto},
+  booktitle = ICCV,
+  year      = {2021}
+}
+
+@inproceedings{bae2024dsine,
+  title     = {Rethinking Inductive Biases for Surface Normal Estimation},
+  author    = {Bae, Gwangbin and Davison, Andrew J.},
+  booktitle = CVPR,
+  year      = {2024}
+}
+
+% ---------------------------------------------------------------------
+%  Rotations, frame fields, surface parameterisation
+% ---------------------------------------------------------------------
+
+@inproceedings{zhou2019continuity,
+  title     = {On the Continuity of Rotation Representations in Neural Networks},
+  author    = {Zhou, Yi and Barnes, Connelly and Lu, Jingwan and Yang, Jimei and Li, Hao},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+@article{kabsch1976,
+  title   = {A Solution for the Best Rotation to Relate Two Sets of Vectors},
+  author  = {Kabsch, Wolfgang},
+  journal = {Acta Crystallographica Section A},
+  volume  = {32},
+  number  = {5},
+  pages   = {922--923},
+  year    = {1976}
+}
+
+@article{hartley2013rotation,
+  title   = {Rotation Averaging},
+  author  = {Hartley, Richard and Trumpf, Jochen and Dai, Yuchao and Li, Hongdong},
+  journal = IJCV,
+  volume  = {103},
+  number  = {3},
+  pages   = {267--305},
+  year    = {2013}
+}
+
+@article{huynh2009metrics,
+  title   = {Metrics for {3D} Rotations: Comparison and Analysis},
+  author  = {Huynh, Du Q.},
+  journal = JMIV,
+  volume  = {35},
+  number  = {2},
+  pages   = {155--164},
+  year    = {2009}
+}
+
+@inproceedings{levinson2020svd,
+  title     = {An Analysis of {SVD} for Deep Rotation Estimation},
+  author    = {Levinson, Jake and Esteves, Carlos and Chen, Kefan and Snavely, Noah and Kanazawa, Angjoo and Rostamizadeh, Afshin and Makadia, Ameesh},
+  booktitle = NIPS,
+  year      = {2020}
+}
+
+@article{ray2008nsym,
+  title   = {{N}-Symmetry Direction Field Design},
+  author  = {Ray, Nicolas and Vallet, Bruno and Li, Wan Chiu and L{\'e}vy, Bruno},
+  journal = TOG,
+  volume  = {27},
+  number  = {2},
+  pages   = {10:1--10:13},
+  year    = {2008}
+}
+
+@article{bommes2009miq,
+  title   = {Mixed-Integer Quadrangulation},
+  author  = {Bommes, David and Zimmer, Henrik and Kobbelt, Leif},
+  journal = TOG,
+  volume  = {28},
+  number  = {3},
+  pages   = {77:1--77:10},
+  year    = {2009}
+}
+
+@article{knoppel2013direction,
+  title   = {Globally Optimal Direction Fields},
+  author  = {Kn{\"o}ppel, Felix and Crane, Keenan and Pinkall, Ulrich and Schr{\"o}der, Peter},
+  journal = TOG,
+  volume  = {32},
+  number  = {4},
+  pages   = {59:1--59:10},
+  year    = {2013}
+}
+
+@article{vaxman2016directional,
+  title   = {Directional Field Synthesis, Design, and Processing},
+  author  = {Vaxman, Amir and Campen, Marcel and Diamanti, Olga and Panozzo, Daniele and Bommes, David and Hildebrandt, Klaus and Ben-Chen, Mirela},
+  journal = CGF,
+  volume  = {35},
+  number  = {2},
+  pages   = {545--572},
+  year    = {2016}
+}
+
+@article{tutte1963,
+  title   = {How to Draw a Graph},
+  author  = {Tutte, William T.},
+  journal = {Proceedings of the London Mathematical Society},
+  volume  = {s3-13},
+  number  = {1},
+  pages   = {743--767},
+  year    = {1963}
+}
+
+@article{floater2003mean,
+  title   = {Mean Value Coordinates},
+  author  = {Floater, Michael S.},
+  journal = {Computer Aided Geometric Design},
+  volume  = {20},
+  number  = {1},
+  pages   = {19--27},
+  year    = {2003}
+}
+
+@article{levy2002lscm,
+  title   = {Least Squares Conformal Maps for Automatic Texture Atlas Generation},
+  author  = {L{\'e}vy, Bruno and Petitjean, Sylvain and Ray, Nicolas and Maillot, J{\'e}r{\^o}me},
+  journal = TOG,
+  volume  = {21},
+  number  = {3},
+  pages   = {362--371},
+  year    = {2002}
+}
+
+% ---------------------------------------------------------------------
+%  Rendering models used by the visualisation suite
+% ---------------------------------------------------------------------
+
+@inproceedings{kajiya1989rendering,
+  title     = {Rendering Fur with Three Dimensional Textures},
+  author    = {Kajiya, James T. and Kay, Timothy L.},
+  booktitle = {SIGGRAPH},
+  pages     = {271--280},
+  year      = {1989}
+}
+
+@inproceedings{stam1999diffraction,
+  title     = {Diffraction Shaders},
+  author    = {Stam, Jos},
+  booktitle = {SIGGRAPH},
+  pages     = {101--110},
+  year      = {1999}
+}
+
+% ---------------------------------------------------------------------
+%  Consumers of DensePose: pose-guided synthesis, try-on, animation, HMR
+% ---------------------------------------------------------------------
+
+@inproceedings{neverova2018dpt,
+  title     = {Dense Pose Transfer},
+  author    = {Neverova, Natalia and G{\"u}ler, R{\i}za Alp and Kokkinos, Iasonas},
+  booktitle = ECCV,
+  year      = {2018}
+}
+
+@inproceedings{ren2022nted,
+  title     = {Neural Texture Extraction and Distribution for Controllable Person Image Synthesis},
+  author    = {Ren, Yurui and Fan, Xiaoqing and Li, Ge and Liu, Shan and Li, Thomas H.},
+  booktitle = CVPR,
+  year      = {2022}
+}
+
+@inproceedings{zhou2022casd,
+  title     = {Cross Attention Based Style Distribution for Controllable Person Image Synthesis},
+  author    = {Zhou, Xinyue and Yin, Mingyu and Chen, Xinyuan and Sun, Li and Gao, Changxin and Li, Qingli},
+  booktitle = ECCV,
+  year      = {2022}
+}
+
+@inproceedings{pidm2023,
+  title     = {Person Image Synthesis via Denoising Diffusion Model},
+  author    = {Bhunia, Ankan Kumar and Khan, Salman and Cholakkal, Hisham and Anwer, Rao Muhammad and Laaksonen, Jorma and Shah, Mubarak and Khan, Fahad Shahbaz},
+  booktitle = CVPR,
+  year      = {2023}
+}
+
+@inproceedings{shen2024pcdm,
+  title     = {Advancing Pose-Guided Image Synthesis with Progressive Conditional Diffusion Models},
+  author    = {Shen, Fei and Ye, Hu and Zhang, Jun and Wang, Cong and Han, Xiao and Yang, Wei},
+  booktitle = ICLR,
+  year      = {2024}
+}
+
+@inproceedings{cfld2024,
+  title     = {Coarse-to-Fine Latent Diffusion for Pose-Guided Person Image Synthesis},
+  author    = {Lu, Yanzuo and Zhang, Manlin and Ma, Andy J. and Xie, Xiaohua and Lai, Jian-Huang},
+  booktitle = CVPR,
+  year      = {2024}
+}
+
+@inproceedings{pham2024xmdpt,
+  title     = {Cross-View Masked Diffusion Transformers for Person Image Synthesis},
+  author    = {Pham, Trung X. and Zhang, Kang and Yoo, Chang D.},
+  booktitle = ICML,
+  year      = {2024}
+}
+
+@inproceedings{mcld2025,
+  title     = {Multi-Focal Conditioned Latent Diffusion for Person Image Synthesis},
+  author    = {Liu, Jiaqi and Zhang, Jichao and Rota, Paolo and Sebe, Nicu},
+  booktitle = CVPR,
+  year      = {2025}
+}
+
+@article{fpdm2024,
+  title   = {Fusion Embedding for Pose-Guided Person Image Synthesis with Diffusion Model},
+  author  = {Lee, Donghwna and Kim, Kirok and Lee, Jisu and Min, Kyungha and Kim, Wooju},
+  journal = TOMM,
+  year    = {2025},
+  note    = {arXiv:2412.07333}
+}
+
+@inproceedings{leffa2025,
+  title     = {Learning Flow Fields in Attention for Controllable Person Image Generation},
+  author    = {Zhou, Zijian and Liu, Shikun and Han, Xiao and Liu, Haozhe and Ng, Kam Woh and Xie, Tian and Cong, Yuren and Li, Hang and Xu, Mengmeng and P{\'e}rez-R{\'u}a, Juan-Manuel and Xiang, Tao and Shi, Miaojing and He, Sen},
+  booktitle = CVPR,
+  year      = {2025}
+}
+
+@inproceedings{choi2021vitonhd,
+  title     = {{VITON-HD}: High-Resolution Virtual Try-On via Misalignment-Aware Normalization},
+  author    = {Choi, Seunghwan and Park, Sunghyun and Lee, Minsoo and Choo, Jaegul},
+  booktitle = CVPR,
+  year      = {2021}
+}
+
+@inproceedings{kim2024stableviton,
+  title     = {{StableVITON}: Learning Semantic Correspondence with Latent Diffusion Model for Virtual Try-On},
+  author    = {Kim, Jeongho and Gu, Guojung and Park, Minho and Park, Sunghyun and Choo, Jaegul},
+  booktitle = CVPR,
+  year      = {2024}
+}
+
+@inproceedings{choi2024idmvton,
+  title     = {Improving Diffusion Models for Authentic Virtual Try-On in the Wild},
+  author    = {Choi, Yisol and Kwak, Sangkyung and Lee, Kyungmin and Choi, Hyungwon and Shin, Jinwoo},
+  booktitle = ECCV,
+  year      = {2024}
+}
+
+@inproceedings{xu2024magicanimate,
+  title     = {{MagicAnimate}: Temporally Consistent Human Image Animation Using Diffusion Model},
+  author    = {Xu, Zhongcong and Zhang, Jianfeng and Liew, Jun Hao and Yan, Hanshu and Liu, Jia-Wei and Zhang, Chenxu and Feng, Jiashi and Shou, Mike Zheng},
+  booktitle = CVPR,
+  year      = {2024}
+}
+
+@inproceedings{zhu2024champ,
+  title     = {{Champ}: Controllable and Consistent Human Image Animation with {3D} Parametric Guidance},
+  author    = {Zhu, Shenhao and Chen, Junming Leo and Dai, Zuozhuo and Xu, Yinghui and Cao, Xun and Yao, Yao and Zhu, Hao and Zhu, Siyu},
+  booktitle = ECCV,
+  year      = {2024}
+}
+
+@inproceedings{guler2019holopose,
+  title     = {{HoloPose}: Holistic {3D} Human Reconstruction In-The-Wild},
+  author    = {G{\"u}ler, R{\i}za Alp and Kokkinos, Iasonas},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+@inproceedings{xu2019denserac,
+  title     = {{DenseRaC}: Joint {3D} Pose and Shape Estimation by Dense Render-and-Compare},
+  author    = {Xu, Yuanlu and Zhu, Song-Chun and Tung, Tony},
+  booktitle = ICCV,
+  year      = {2019}
+}
+
+@inproceedings{zeng2020decomr,
+  title     = {{3D} Human Mesh Regression with Dense Correspondence},
+  author    = {Zeng, Wang and Ouyang, Wanli and Luo, Ping and Liu, Wentao and Wang, Xiaogang},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{shysheya2019tna,
+  title     = {Textured Neural Avatars},
+  author    = {Shysheya, Aliaksandra and Zakharov, Egor and Aliev, Kara-Ali and Bashirov, Renat and Burkov, Egor and Iskakov, Karim and Ivakhnenko, Aleksei and Malkov, Yury and Pasechnik, Igor and Ulyanov, Dmitry and Vakhitov, Alexander and Lempitsky, Victor},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+% ---------------------------------------------------------------------
+%  Evaluation metrics
+% ---------------------------------------------------------------------
+
+@inproceedings{zhang2018lpips,
+  title     = {The Unreasonable Effectiveness of Deep Features as a Perceptual Metric},
+  author    = {Zhang, Richard and Isola, Phillip and Efros, Alexei A. and Shechtman, Eli and Wang, Oliver},
+  booktitle = CVPR,
+  year      = {2018}
+}
+
+@article{wang2004ssim,
+  title   = {Image Quality Assessment: From Error Visibility to Structural Similarity},
+  author  = {Wang, Zhou and Bovik, Alan C. and Sheikh, Hamid R. and Simoncelli, Eero P.},
+  journal = TIP,
+  volume  = {13},
+  number  = {4},
+  pages   = {600--612},
+  year    = {2004}
+}
+
+@inproceedings{heusel2017fid,
+  title     = {{GAN}s Trained by a Two Time-Scale Update Rule Converge to a Local Nash Equilibrium},
+  author    = {Heusel, Martin and Ramsauer, Hubert and Unterthiner, Thomas and Nessler, Bernhard and Hochreiter, Sepp},
+  booktitle = NIPS,
+  year      = {2017}
+}
+
+@inproceedings{parmar2022cleanfid,
+  title     = {On Aliased Resizing and Surprising Subtleties in {GAN} Evaluation},
+  author    = {Parmar, Gaurav and Zhang, Richard and Zhu, Jun-Yan},
+  booktitle = CVPR,
+  year      = {2022}
+}
+
+% ---------------------------------------------------------------------
+%  Added in revision: positioning against dense human geometry, image
+%  frame fields, dense object-pose correspondence, and the DensePose-COCO
+%  accuracy line.
+% ---------------------------------------------------------------------
+
+@inproceedings{khirodkar2024sapiens,
+  title     = {Sapiens: Foundation for Human Vision Models},
+  author    = {Khirodkar, Rawal and Bagautdinov, Timur and Martinez, Julieta and Zhaoen, Su and James, Austin and Selednik, Peter and Anderson, Stuart and Saito, Shunsuke},
+  booktitle = ECCV,
+  year      = {2024}
+}
+
+@inproceedings{girard2021framefield,
+  title     = {Polygonal Building Extraction by Frame Field Learning},
+  author    = {Girard, Nicolas and Smirnov, Dmitriy and Solomon, Justin and Tarabalka, Yuliya},
+  booktitle = CVPR,
+  year      = {2021}
+}
+
+@inproceedings{haugaard2022surfemb,
+  title     = {{SurfEmb}: Dense and Continuous Correspondence Distributions for Object Pose Estimation with Learnt Surface Embeddings},
+  author    = {Haugaard, Rasmus Laurvig and Buch, Anders Glent},
+  booktitle = CVPR,
+  year      = {2022}
+}
+
+@inproceedings{hodan2020epos,
+  title     = {{EPOS}: Estimating 6D Pose of Objects with Symmetries},
+  author    = {Hoda{\v{n}}, Tom{\'a}{\v{s}} and Bar{\'a}th, D{\'a}niel and Matas, Ji{\v{r}}{\'\i}},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{park2019pix2pose,
+  title     = {{Pix2Pose}: Pixel-Wise Coordinate Regression of Objects for 6D Pose Estimation},
+  author    = {Park, Kiru and Patten, Timothy and Vincze, Markus},
+  booktitle = ICCV,
+  year      = {2019}
+}
+
+@inproceedings{saito2020pifuhd,
+  title     = {{PIFuHD}: Multi-Level Pixel-Aligned Implicit Function for High-Resolution 3D Human Digitization},
+  author    = {Saito, Shunsuke and Simon, Tomas and Saragih, Jason and Joo, Hanbyul},
+  booktitle = CVPR,
+  year      = {2020}
+}
+
+@inproceedings{xiu2022icon,
+  title     = {{ICON}: Implicit Clothed Humans Obtained from Normals},
+  author    = {Xiu, Yuliang and Yang, Jinlong and Tzionas, Dimitrios and Black, Michael J.},
+  booktitle = CVPR,
+  year      = {2022}
+}
+
+@inproceedings{tan2021humangps,
+  title     = {{HumanGPS}: Geodesic {PreServing} Feature for Dense Human Correspondences},
+  author    = {Tan, Feitong and Tang, Danhang and Dou, Mingsong and Guo, Kaiwen and Pandey, Rohit and Keskin, Cem and Du, Ruofei and Sun, Deqing and Bouaziz, Sofien and Fanello, Sean and Tan, Ping and Zhang, Yinda},
+  booktitle = CVPR,
+  year      = {2021}
+}
+
+@inproceedings{sorkine2007arap,
+  title     = {As-Rigid-As-Possible Surface Modeling},
+  author    = {Sorkine, Olga and Alexa, Marc},
+  booktitle = {Symposium on Geometry Processing},
+  year      = {2007}
+}
+
+@inproceedings{yang2019parsingrcnn,
+  title     = {Parsing {R-CNN} for Instance-Level Human Analysis},
+  author    = {Yang, Lu and Song, Qing and Wang, Zhihui and Jiang, Ming},
+  booktitle = CVPR,
+  year      = {2019}
+}
+
+@inproceedings{murphy2021ipdf,
+  title     = {Implicit-{PDF}: Non-Parametric Representation of Probability Distributions on the Rotation Manifold},
+  author    = {Murphy, Kieran and Esteves, Carlos and Jampani, Varun and Ramalingam, Srikumar and Makadia, Ameesh},
+  booktitle = ICML,
+  year      = {2021}
+}

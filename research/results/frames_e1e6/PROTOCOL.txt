@@ -1,0 +1,101 @@
+PIXEL FRAME FIELDS -- E1 (frame derived from the correspondence, no rotation head) and E6 (normal/twist split)
+Pre-declared 2026-09-30, BEFORE any E1/E6 number was computed. Evaluation only, no training.
+Script: ~/codes/wan/densepose/orient/eval_frames_e1e6.py      Outputs: ~/data/dp_frames_eval/
+
+-------------------------------------------------------------------------------------------------------------
+1. SPLITS (exactly the sample sets behind the RESULTS.md orientation numbers)
+-------------------------------------------------------------------------------------------------------------
+S1  BEDLAM2-val, synthetic. = orient/eval_512.py's sample set: build_loader("val", batch=16, workers=6,
+    input_size=512, train=False, orient=True, uv_asset=smplx_face_uv_v2.npy, gt512=True), first 32 batches
+    = 512 instances, ~/data/bedlam2/dp_shards_512/val. Labels: fixed 512^2 GT canvas (never resampled).
+S2  MAMMA sequence-level occlusion holdout. = orient/indomain_probe.py's sample set as run by
+    slurm/wmj_verdict.sbatch: the 59 holdout shards (29 seqs, md5(seq)%50==0) in
+    ~/data/datasets/dp_shards_rot_mamma/holdout_links, permuted by RandomState(0), build_loader("val",
+    batch=16, workers=2, input_size=512, train=False, orient=True, shards=...), first 40 batches = 640
+    instances (identified by uid).
+    * The sanity reproduction of the RESULTS number uses that native decode (rot labels at min(cs,384)).
+    * E1/E6 are scored on the SAME uids decoded from the gt512 canvas of the same shards
+      (~/data/datasets/dp_shards_512_mamma/train/<same basename>), because the native path point-samples the
+      correspondence twice (warpAffine + nearest to 384), which jitters the GT surface point by up to ~0.15 px
+      and would corrupt finite differences of the GT correspondence (the E1 floor). The head is reported on both.
+
+-------------------------------------------------------------------------------------------------------------
+2. CHECKPOINTS
+-------------------------------------------------------------------------------------------------------------
+C1  dp_w_M/ckpt_120000.pt       PRIMARY. RESULTS: BEDLAM-val geo_e2e 6.86 (eval_512), holdout 6.89 (probe)
+C2  dp_csc_C/ckpt_025000.pt     paper-intro headline 6.77 (BEDLAM-val). Lineage trained on the holdout seqs:
+                                its S2 number is in-distribution (reported, flagged).
+C3  dp_w_MF/ckpt_003000.pt      shipped / COCO winner. RESULTS: holdout 8.24.
+C4  dp_v21_M/ckpt_120000.pt     latest V-JEPA 2.1 run (differs from dp_w_M).
+C5  dp_w_B/ckpt_120000.pt       BEDLAM-only arm. RESULTS: BEDLAM-val 6.98, holdout 14.80.
+SANITY GATE: the head's statistic computed exactly as the original script must reproduce RESULTS.md
+(S1: eval_512 = mean over the 32 batches of the per-batch MEDIAN of the per-pixel geodesic error over GT fg,
+rotation gathered by argmax part of the warped logits; S2: indomain_probe = pixel-pooled MEAN at rot res,
+gather by predicted part). If it does not reproduce, stop and find out why before reporting anything else.
+
+-------------------------------------------------------------------------------------------------------------
+3. PIXEL SET (per split x checkpoint; ALL methods scored on the same set)
+-------------------------------------------------------------------------------------------------------------
+Omega = GT foreground (face>=0) of the target person
+        AND NOT a hidden SMPL-X face (smplx_hidden_faces.npy; training's hidden_mask: these are not supervised)
+        AND central-difference stencil valid for the GT correspondence (x+-1 col, x+-1 row all fg, same GT part)
+        AND central-difference stencil valid for the PREDICTED correspondence (same predicted part at x+-1 col/row;
+            predicted part = argmax of the 24 warped part logits, as eval_512; the mask head is not used)
+        AND finite, non-degenerate derived solutions for both the predicted and the GT correspondence
+            (sigma_2 of the 2x2 map > 1e-6 * sigma_1).
+Report the number of GT-fg pixels dropped at each stage.
+
+-------------------------------------------------------------------------------------------------------------
+4. METHODS
+-------------------------------------------------------------------------------------------------------------
+H        rotation head, per-part 6D gathered by the PREDICTED part (geo_e2e readout), bilinear warp to canvas.
+H-orc    same, gathered by the GT part (geo_oracle; reference only).
+D-<corr>-<disamb>[-<cam>][-r<k>]  frame derived from a correspondence, no rotation head:
+  corr   pred = predicted part + uv, uv gathered by the predicted part, mapped through the chart (CSC K=512
+                texture = the only (part,uv)->template route in the model; there is no separate XYZ head);
+                template normal at the predicted point from a normal texture baked exactly like the CSC texture
+                (barycentric blend of area-weighted rest vertex normals).
+         gt   = exact GT template point (face + barycentrics, float32) and GT template normal.
+  P(x)   per-pixel template point. J(x) = dP/dx (3x2, per canvas px) by least squares over a (2r+1)^2 window,
+         using only window pixels of the SAME part (pred part for pred, GT part for gt) that are foreground,
+         with a free intercept (plane fit). r in {1,2,3}; all r reported. The main table uses, per derived
+         method, the r with the lowest pixel-pooled mean geodesic error on that split for C1 (a test-set choice
+         IN THE BASELINE'S FAVOUR).
+  A      T = [T1 T2] orthonormal template tangent basis at P (Gram-Schmidt of the template axis least aligned
+         with N); A_canvas = (T^T J)^-1 maps tangent coords -> canvas px. Converted to normalised PyTorch3D image
+         coords (x left, y up): A_n = diag(-1/f', -1/f') A_canvas, f' = canvas focal.
+  cam    persp (default): full perspective, M = [[1,0,-x~],[0,1,-y~]], x~ = -(u+0.5-cx')/f', y~ = -(v+0.5-cy')/f'
+         from the canvas intrinsics (source cam_int cropped to gt_box: f' = f*512/side, c' = (c-g0)*512/side;
+         BEDLAM2 cam_int from correspondence/posed3d/<job>.npz by uid; MAMMA cam_int from the source .data.pyd).
+         weak: M = [I 0]. Reported as a secondary row.
+  solve  A_n = s M [c1 c2], c1 = R T1, c2 = R T2 orthonormal, s unknown. Closed form: with d the unit ray, E an
+         orthonormal basis of d-perp and G = M E, A' = G^-1 A_n = U diag(s1,s2) V^T; then
+         [c1 c2] = E (A'/s1) + d t^T with t = +-sqrt(1-(s2/s1)^2) v2. TWO solutions (the sign of t: tilt/Necker
+         ambiguity). R_derived = [c1 c2 c1xc2][T1 T2 N]^T. Solver verified on synthetic rotations first
+         (weak and perspective): one of the two solutions must recover R to < 1e-3 deg.
+  disamb orc    = per pixel the solution closer (geodesic) to GT. UPPER BOUND, in the baseline's favour.
+         part   = GT-free: per image and per part (pred part for pred, GT part for gt), RANSAC over the 2
+                  candidates of up to 64 random pixels (seed 0): score = #pixels with a candidate within 20 deg;
+                  the best hypothesis is refined 3x by the chordal mean of the inliers' closer candidates;
+                  every pixel takes the candidate closer to that part reference (rigid-part prior: the true
+                  solution is ~constant over a rigid part, the mirror solution varies with the template normal).
+         smooth = GT-free: 'part' labels, then 6 checkerboard ICM sweeps: each pixel takes the candidate with the
+                  smaller summed chordal distance to its 8 same-part neighbours' current choices.
+         Pre-declared primary practical rule: smooth.
+
+-------------------------------------------------------------------------------------------------------------
+5. METRICS (degrees)
+-------------------------------------------------------------------------------------------------------------
+geodesic  angle of R_gt^T R_pred.
+normal    angle between R_pred N and R_gt N, N = GT template normal at the GT surface point (same N for every
+          method, so it isolates R). = swing angle of the swing-twist split of R_gt^T R_pred about N.
+twist     twist angle of R_gt^T R_pred about N: quaternion (w,v), w>=0: 2*atan2(|v.N|, w). = the rotation about the
+          GT normal left after aligning the normals by the minimal rotation.
+Statistics: mean / median / p90, pixel-pooled over Omega AND over per-image means (mean of per-image means,
+plus median/p90 of per-image means).
+Ambiguity: share of Omega where the two derived solutions differ by > 30 deg (pred and gt correspondence).
+Paired per image (per-image mean geodesic over Omega): H vs best practical D-pred, H vs D-pred-orc:
+wins/losses, two-sided sign test, mean difference with a 95% bootstrap CI (10,000 image resamples, seed 0).
+Breakdowns: GT part group (torso 1-2, hands+feet 3-6, legs 7-14, arms 15-22, head 23-24); distance to the
+target person's GT silhouette in canvas px (Euclidean distance transform of face>=0): <4, 4-12, >=12;
+garment vs body: NO garment label exists in these shards (GT is the SMPL-X body) -> not reported.

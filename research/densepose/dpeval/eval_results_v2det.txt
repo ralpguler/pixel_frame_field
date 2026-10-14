@@ -1,0 +1,17 @@
+Detector-box eval with fasterrcnn_resnet50_fpn_V2 — 11:10
+
+### v1 ViT-B | DETECTOR-v2
+   built 7330 predictions over 1506 images
+    Average Precision  (AP) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.568
+    Average Precision  (AP) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.908
+    Average Recall     (AR) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.655
+    Average Recall     (AR) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.941
+
+### v2 ViT-L | DETECTOR-v2 (step40k)
+   built 7330 predictions over 1506 images
+    Average Precision  (AP) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.624
+    Average Precision  (AP) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.922
+    Average Recall     (AR) @[ OGPS=0.50:0.95 | area=   all | maxDets= 20 ] = 0.706
+    Average Recall     (AR) @[ OGPS=0.50      | area=   all | maxDets= 20 ] = 0.956
+
+DONE 11:17

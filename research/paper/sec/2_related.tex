@@ -1,0 +1,57 @@
+\section{Related Work}
+\label{sec:related}
+
+\paragraph{Dense human correspondence and its supervision.}
+DensePose~\cite{guler2018densepose} maps foreground pixels to points on the
+SMPL~\cite{loper2015smpl} surface via a part index and two chart coordinates, and introduced the
+DensePose-COCO benchmark and the geodesic point similarity (GPS) we use; its $24$ planar PCA charts
+and the ResNet-101 predictor released with detectron2~\cite{wu2019detectron2} have been inherited
+essentially unchanged, though accuracy work
+continued~\cite{yang2019parsingrcnn,neverova2019slim,neverova2020cse,neverova2021ucm,shapovalov2021densepose3d,ianina2022bodymap,pozdeev2025densemarks,tan2021humangps}.
+All predict a surface \emph{point}; none a surface \emph{frame}. We keep charts, because they are
+the interface the ecosystem consumes, repair a defect in their labels, and recover the metric
+consistency that motivated CSE~\cite{neverova2020cse} and continuous UV maps~\cite{zeng2020decomr}
+through the \emph{loss} rather than the representation; regressing a canonical surface coordinate
+in metres is standard in dense object
+pose~\cite{wang2019nocs,park2019pix2pose,hodan2020epos,haugaard2022surfemb}, and our contribution
+there is not the idea but its exact validity test on a folded atlas. Synthetic
+corpora~\cite{varol2017surreal,patel2021agora,black2023bedlam,tesch2025bedlam2} give every pixel an
+exact face index and barycentric weights, hence \emph{any} per-pixel quantity derivable from the
+mesh --- a surface frame included, which is what makes an orientation target available at all; for
+occlusion and body-to-body
+contact~\cite{fieraru2020chi3d,yin2023hi4d,khirodkar2024harmony4d,xu2024interx} we train on MAMMA's
+synthetic corpus~\cite{cuevas2025mamma} under a sequence-level holdout.
+
+\paragraph{Orientation: normals, rotations, frame fields.}
+Monocular networks have long emitted per-pixel directions~\cite{eigen2015multiscale} and dedicated
+normals~\cite{bae2021nll,bae2024dsine}, including for clothed
+humans~\cite{saito2020pifuhd,xiu2022icon} and as one head of a human-centric foundation
+model~\cite{khirodkar2024sapiens}; our multi-scale gradient term follows the scale-invariant depth
+literature~\cite{eigen2015multiscale,li2018megadepth,ranftl2020midas}, applied to correspondence. A
+normal leaves the rotation about itself undetermined, and that twist decides how an anisotropic
+highlight, a hair strand or an attached object sits on the body. Frame fields are mature in geometry
+processing~\cite{ray2008nsym,bommes2009miq,knoppel2013direction,vaxman2016directional}, where the
+field is optimised on a mesh already given, and have been predicted from images as 2D $4$-RoSy
+fields for building extraction~\cite{girard2021framefield}; here the predicted object is a full
+element of $SO(3)$ anchored to a body template. We use the continuous 6D
+parameterisation~\cite{zhou2019continuity} with a chordal objective, a monotone function of the
+geodesic angle~\cite{huynh2009metrics}; SVD orthogonalisation~\cite{levinson2020svd} is the
+standard alternative and modelling the full $SO(3)$ distribution~\cite{murphy2021ipdf} the natural
+treatment of the ambiguity on near-cylindrical limbs. Our target is the local as-rigid-as-possible
+rotation~\cite{sorkine2007arap} of the one-ring, by Kabsch~\cite{kabsch1976} with a normal pin. We
+are not aware of prior work predicting a per-pixel $SO(3)$ element on the human body from an image.
+
+\paragraph{Consumers of DensePose.}
+$IUV$ maps condition pose-guided
+synthesis~\cite{neverova2018dpt,ren2022nted,zhou2022casd,pidm2023,shen2024pcdm,cfld2024,pham2024xmdpt,mcld2025,fpdm2024,leffa2025},
+try-on~\cite{choi2021vitonhd,kim2024stableviton,choi2024idmvton},
+animation~\cite{xu2024magicanimate,zhu2024champ} and mesh and avatar
+recovery~\cite{guler2019holopose,xu2019denserac,zeng2020decomr,shysheya2019tna}. Throughout the
+correspondence is a \emph{fixed input}: the predictor is imported and frozen and the contribution
+is architectural, so progress is measured by changing the consumer --- the largest published LPIPS
+step on DeepFashion pose transfer, MCLD~\cite{mcld2025} to FPDM~\cite{fpdm2024}, is $0.0037$,
+obtained while losing SSIM, PSNR and FID. That some systems render SMPL normals as extra
+conditioning~\cite{zhu2024champ} shows the demand for surface geometry; they obtain it by fitting a
+body model, the most obvious baseline for our frame field and one we did not run. What the
+correspondence \emph{input} is worth has, to our knowledge, never been measured, because measuring
+it means retraining the consumer; \cref{sec:exp_down} does that.

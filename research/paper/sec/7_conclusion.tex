@@ -1,0 +1,50 @@
+\section{Limitations}
+\label{sec:limitations}
+
+Every model here is a single training run, so we have no seed-to-seed variance and several
+differences we report are below what we can resolve: the $0.3$-point margin of \cref{tab:coco},
+smaller than the $0.4$-point spread between neighbouring checkpoints of one run; the $0.008$ spread
+among the CSC gather variants; the $0.1$--$0.2^\circ$ range of the end-to-end geodesic numbers. We
+have avoided ``free'' and ``noise'' for that reason, and the reported checkpoint is in addition the
+maximum of a sweep evaluated on the set it is reported on. No published DensePose model has been
+re-scored under our harness, so \cref{tab:coco} compares us only to ourselves. The ablations are
+also narrower than the contribution list: the chart repair's AP effect is confounded with schedule
+in the only near-matched comparison we ran and it is fold-free on hands and feet only; the CSC and
+chart ablations are fine-tunes from a checkpoint trained at the learning rate \cref{tab:recipe}
+identifies as broken, so the shipped model contains no CSC on/off comparison; and the
+hidden-geometry mask and the no-resampling rule rest on label-corruption statistics rather than on
+models trained with and without them --- documented requirements, not ablated components.
+
+The frame field is supervised only by synthetic ground truth, because no real-image benchmark for
+per-pixel surface orientation exists, so our real-image evidence for $\hat R$ is qualitative and it
+has no baseline of any kind --- in particular not the frame obtainable by differentiating the
+predicted $UV$ map. Its target is the SMPL-X \emph{body} surface, so on loose garments and hair
+$\hat R$ describes a surface that is not the one seen. Horizontal flip is disabled whenever the
+rotation head is active, the normal pin of \cref{eq:kabsch} is soft with a residual we never
+measured, the fraction of foreground passing \cref{eq:valid} is likewise unmeasured, and we report
+no GPU-hours and no inference latency. The joint COCO fine-tune buys real-domain accuracy
+($0.621\!\rightarrow\!0.741$ AP) and costs held-out occlusion accuracy
+($6.89^\circ\!\rightarrow\!8.24^\circ$), so we release two checkpoints rather than claim one is
+best at both. Downstream, the study covers a single generator on a single domain with one training
+run per arm, the swapped variable is a correspondence \emph{model} carrying its own detector and
+box geometry rather than correspondence quality as a scalar, and the host consumes only $IUV$; our
+Leffa comparison is like-for-like on identical inputs but on a $1499$-pair subset and does not
+reproduce Leffa's published numbers.
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+We revisited the correspondence stage of DensePose --- the part of the pipeline its consumers
+import and freeze --- and gave it an output it never had: a full per-pixel $SO(3)$ surface frame,
+predicted alongside $IUV$. Predicting that frame correctly is what forced the rest: re-flattening
+the hand and foot charts, supervising correspondence in metric template coordinates, never
+resampling the labels, and training on occlusion under a sequence-level holdout. The model reaches
+$0.741$ GPS AP on DensePose-COCO minival under a ground-truth-box protocol, above every model in
+our own lineage while carrying the frame field --- parity with an extra output rather than a win
+--- and in a controlled retrain of a CVPR'25 generator it is worth $+0.0116$ paired LPIPS, of the
+same order as the largest published LPIPS step on that benchmark and without its trade-offs. Which
+correspondence model a system uses is, in short, still a live variable in systems that treat it as
+settled. We will release code, the two checkpoints, the \textsc{v2} chart asset and the
+\textsc{v2}$\rightarrow$\textsc{v1} remap table, so the label fix can be adopted independently of
+our model.
+

@@ -1,0 +1,52 @@
+% CVPR 2026 submission -- Oriented DensePose
+% Build:  pdflatex main ; bibtex main ; pdflatex main ; pdflatex main
+
+\documentclass[10pt,twocolumn,letterpaper]{article}
+
+%%%%%%%%% PAPER TYPE
+% \usepackage{cvpr}              % CAMERA-READY
+\usepackage[review]{cvpr}        % REVIEW version
+% \usepackage[pagenumbers]{cvpr} % arXiv version
+
+\input{preamble}
+
+\definecolor{cvprblue}{rgb}{0.21,0.49,0.74}
+\usepackage[pagebackref,breaklinks,colorlinks,allcolors=cvprblue]{hyperref}
+
+%%%%%%%%% PAPER ID
+\def\paperID{*****}
+\def\confName{CVPR}
+\def\confYear{2026}
+
+%%%%%%%%% TITLE
+\title{Oriented DensePose: From Surface Points to Surface Frames}
+
+%%%%%%%%% AUTHORS (anonymous for review)
+\author{Anonymous \confName~submission\\
+Paper ID \paperID
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\input{0_abstract}
+\end{abstract}
+
+\input{sec/1_intro}
+\input{sec/2_related}
+\input{sec/3_method}
+\input{sec/4_exp_correspondence}
+\input{sec/5_exp_orientation}
+\input{sec/6_exp_downstream}
+\input{sec/7_conclusion}
+
+{
+    \small
+    \bibliographystyle{ieeenat_fullname}
+    \bibliography{main}
+}
+
+\input{sec/8_suppl}
+
+\end{document}

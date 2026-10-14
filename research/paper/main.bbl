@@ -1,0 +1,382 @@
+\begin{thebibliography}{74}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bae and Davison(2024)]{bae2024dsine}
+Gwangbin Bae and Andrew~J. Davison.
+\newblock Rethinking inductive biases for surface normal estimation.
+\newblock In \emph{CVPR}, 2024.
+
+\bibitem[Bae et~al.(2021)Bae, Budvytis, and Cipolla]{bae2021nll}
+Gwangbin Bae, Ignas Budvytis, and Roberto Cipolla.
+\newblock Estimating and exploiting the aleatoric uncertainty in surface normal estimation.
+\newblock In \emph{ICCV}, 2021.
+
+\bibitem[Bhunia et~al.(2023)Bhunia, Khan, Cholakkal, Anwer, Laaksonen, Shah, and Khan]{pidm2023}
+Ankan~Kumar Bhunia, Salman Khan, Hisham Cholakkal, Rao~Muhammad Anwer, Jorma Laaksonen, Mubarak Shah, and Fahad~Shahbaz Khan.
+\newblock Person image synthesis via denoising diffusion model.
+\newblock In \emph{CVPR}, 2023.
+
+\bibitem[Black et~al.(2023)Black, Patel, Tesch, and Yang]{black2023bedlam}
+Michael~J. Black, Priyanka Patel, Joachim Tesch, and Jinlong Yang.
+\newblock {BEDLAM}: A synthetic dataset of bodies exhibiting detailed lifelike animated motion.
+\newblock In \emph{CVPR}, 2023.
+
+\bibitem[Bommes et~al.(2009)Bommes, Zimmer, and Kobbelt]{bommes2009miq}
+David Bommes, Henrik Zimmer, and Leif Kobbelt.
+\newblock Mixed-integer quadrangulation.
+\newblock \emph{ACM TOG}, 28\penalty0 (3):\penalty0 77:1--77:10, 2009.
+
+\bibitem[Choi et~al.(2021)Choi, Park, Lee, and Choo]{choi2021vitonhd}
+Seunghwan Choi, Sunghyun Park, Minsoo Lee, and Jaegul Choo.
+\newblock {VITON-HD}: High-resolution virtual try-on via misalignment-aware normalization.
+\newblock In \emph{CVPR}, 2021.
+
+\bibitem[Choi et~al.(2024)Choi, Kwak, Lee, Choi, and Shin]{choi2024idmvton}
+Yisol Choi, Sangkyung Kwak, Kyungmin Lee, Hyungwon Choi, and Jinwoo Shin.
+\newblock Improving diffusion models for authentic virtual try-on in the wild.
+\newblock In \emph{ECCV}, 2024.
+
+\bibitem[Cuevas-Velasquez et~al.(2025)Cuevas-Velasquez, Yiannakidis, Shin, Becherini, H{\"o}schle, Tesch, Obersat, Alexiadis, Halilaj, and Black]{cuevas2025mamma}
+Hanz Cuevas-Velasquez, Anastasios Yiannakidis, Soyong Shin, Giorgio Becherini, Markus H{\"o}schle, Joachim Tesch, Taylor Obersat, Tsvetelina Alexiadis, Eni Halilaj, and Michael~J. Black.
+\newblock {MAMMA}: Markerless and automatic multi-person motion action capture.
+\newblock In \emph{NeurIPS Datasets and Benchmarks Track}, 2025.
+\newblock arXiv:2506.13040.
+
+\bibitem[Eigen and Fergus(2015)]{eigen2015multiscale}
+David Eigen and Rob Fergus.
+\newblock Predicting depth, surface normals and semantic labels with a common multi-scale convolutional architecture.
+\newblock In \emph{ICCV}, 2015.
+
+\bibitem[Fieraru et~al.(2020)Fieraru, Zanfir, Oneata, Popa, Olaru, and Sminchisescu]{fieraru2020chi3d}
+Mihai Fieraru, Mihai Zanfir, Elisabeta Oneata, Alin-Ionut Popa, Vlad Olaru, and Cristian Sminchisescu.
+\newblock Three-dimensional reconstruction of human interactions.
+\newblock In \emph{CVPR}, 2020.
+
+\bibitem[Girard et~al.(2021)Girard, Smirnov, Solomon, and Tarabalka]{girard2021framefield}
+Nicolas Girard, Dmitriy Smirnov, Justin Solomon, and Yuliya Tarabalka.
+\newblock Polygonal building extraction by frame field learning.
+\newblock In \emph{CVPR}, 2021.
+
+\bibitem[G{\"u}ler and Kokkinos(2019)]{guler2019holopose}
+R{\i}za~Alp G{\"u}ler and Iasonas Kokkinos.
+\newblock {HoloPose}: Holistic {3D} human reconstruction in-the-wild.
+\newblock In \emph{CVPR}, 2019.
+
+\bibitem[G{\"u}ler et~al.(2018)G{\"u}ler, Neverova, and Kokkinos]{guler2018densepose}
+R{\i}za~Alp G{\"u}ler, Natalia Neverova, and Iasonas Kokkinos.
+\newblock {DensePose}: Dense human pose estimation in the wild.
+\newblock In \emph{CVPR}, 2018.
+
+\bibitem[Hartley et~al.(2013)Hartley, Trumpf, Dai, and Li]{hartley2013rotation}
+Richard Hartley, Jochen Trumpf, Yuchao Dai, and Hongdong Li.
+\newblock Rotation averaging.
+\newblock \emph{IJCV}, 103\penalty0 (3):\penalty0 267--305, 2013.
+
+\bibitem[Haugaard and Buch(2022)]{haugaard2022surfemb}
+Rasmus~Laurvig Haugaard and Anders~Glent Buch.
+\newblock {SurfEmb}: Dense and continuous correspondence distributions for object pose estimation with learnt surface embeddings.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Heusel et~al.(2017)Heusel, Ramsauer, Unterthiner, Nessler, and Hochreiter]{heusel2017fid}
+Martin Heusel, Hubert Ramsauer, Thomas Unterthiner, Bernhard Nessler, and Sepp Hochreiter.
+\newblock {GAN}s trained by a two time-scale update rule converge to a local nash equilibrium.
+\newblock In \emph{NeurIPS}, 2017.
+
+\bibitem[Hoda{\v{n}} et~al.(2020)Hoda{\v{n}}, Bar{\'a}th, and Matas]{hodan2020epos}
+Tom{\'a}{\v{s}} Hoda{\v{n}}, D{\'a}niel Bar{\'a}th, and Ji{\v{r}}{\'\i} Matas.
+\newblock {EPOS}: Estimating 6d pose of objects with symmetries.
+\newblock In \emph{CVPR}, 2020.
+
+\bibitem[Huynh(2009)]{huynh2009metrics}
+Du~Q. Huynh.
+\newblock Metrics for {3D} rotations: Comparison and analysis.
+\newblock \emph{J. Math. Imaging Vis.}, 35\penalty0 (2):\penalty0 155--164, 2009.
+
+\bibitem[Ianina et~al.(2022)Ianina, Sarafianos, Xu, Rocco, and Tung]{ianina2022bodymap}
+Anastasia Ianina, Nikolaos Sarafianos, Yuanlu Xu, Ignacio Rocco, and Tony Tung.
+\newblock {BodyMap}: Learning full-body dense correspondence map.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Kabsch(1976)]{kabsch1976}
+Wolfgang Kabsch.
+\newblock A solution for the best rotation to relate two sets of vectors.
+\newblock \emph{Acta Crystallographica Section A}, 32\penalty0 (5):\penalty0 922--923, 1976.
+
+\bibitem[Kajiya and Kay(1989)]{kajiya1989rendering}
+James~T. Kajiya and Timothy~L. Kay.
+\newblock Rendering fur with three dimensional textures.
+\newblock In \emph{SIGGRAPH}, pages 271--280, 1989.
+
+\bibitem[Khirodkar et~al.(2024{\natexlab{a}})Khirodkar, Bagautdinov, Martinez, Zhaoen, James, Selednik, Anderson, and Saito]{khirodkar2024sapiens}
+Rawal Khirodkar, Timur Bagautdinov, Julieta Martinez, Su Zhaoen, Austin James, Peter Selednik, Stuart Anderson, and Shunsuke Saito.
+\newblock Sapiens: Foundation for human vision models.
+\newblock In \emph{ECCV}, 2024{\natexlab{a}}.
+
+\bibitem[Khirodkar et~al.(2024{\natexlab{b}})Khirodkar, Song, Cao, Luo, and Kitani]{khirodkar2024harmony4d}
+Rawal Khirodkar, Jyun-Ting Song, Jinkun Cao, Zhengyi Luo, and Kris Kitani.
+\newblock {Harmony4D}: A video dataset for in-the-wild close human interactions.
+\newblock In \emph{NeurIPS Datasets and Benchmarks Track}, 2024{\natexlab{b}}.
+
+\bibitem[Kim et~al.(2024)Kim, Gu, Park, Park, and Choo]{kim2024stableviton}
+Jeongho Kim, Guojung Gu, Minho Park, Sunghyun Park, and Jaegul Choo.
+\newblock {StableVITON}: Learning semantic correspondence with latent diffusion model for virtual try-on.
+\newblock In \emph{CVPR}, 2024.
+
+\bibitem[Kn{\"o}ppel et~al.(2013)Kn{\"o}ppel, Crane, Pinkall, and Schr{\"o}der]{knoppel2013direction}
+Felix Kn{\"o}ppel, Keenan Crane, Ulrich Pinkall, and Peter Schr{\"o}der.
+\newblock Globally optimal direction fields.
+\newblock \emph{ACM TOG}, 32\penalty0 (4):\penalty0 59:1--59:10, 2013.
+
+\bibitem[Lee et~al.(2025)Lee, Kim, Lee, Min, and Kim]{fpdm2024}
+Donghwna Lee, Kirok Kim, Jisu Lee, Kyungha Min, and Wooju Kim.
+\newblock Fusion embedding for pose-guided person image synthesis with diffusion model.
+\newblock \emph{ACM TOMM}, 2025.
+\newblock arXiv:2412.07333.
+
+\bibitem[Levinson et~al.(2020)Levinson, Esteves, Chen, Snavely, Kanazawa, Rostamizadeh, and Makadia]{levinson2020svd}
+Jake Levinson, Carlos Esteves, Kefan Chen, Noah Snavely, Angjoo Kanazawa, Afshin Rostamizadeh, and Ameesh Makadia.
+\newblock An analysis of {SVD} for deep rotation estimation.
+\newblock In \emph{NeurIPS}, 2020.
+
+\bibitem[Li and Snavely(2018)]{li2018megadepth}
+Zhengqi Li and Noah Snavely.
+\newblock {MegaDepth}: Learning single-view depth prediction from internet photos.
+\newblock In \emph{CVPR}, 2018.
+
+\bibitem[Lin et~al.(2014)Lin, Maire, Belongie, Hays, Perona, Ramanan, Doll{\'a}r, and Zitnick]{lin2014coco}
+Tsung-Yi Lin, Michael Maire, Serge Belongie, James Hays, Pietro Perona, Deva Ramanan, Piotr Doll{\'a}r, and C.~Lawrence Zitnick.
+\newblock Microsoft {COCO}: Common objects in context.
+\newblock In \emph{ECCV}, 2014.
+
+\bibitem[Liu et~al.(2025)Liu, Zhang, Rota, and Sebe]{mcld2025}
+Jiaqi Liu, Jichao Zhang, Paolo Rota, and Nicu Sebe.
+\newblock Multi-focal conditioned latent diffusion for person image synthesis.
+\newblock In \emph{CVPR}, 2025.
+
+\bibitem[Liu et~al.(2016)Liu, Luo, Qiu, Wang, and Tang]{liu2016deepfashion}
+Ziwei Liu, Ping Luo, Shi Qiu, Xiaogang Wang, and Xiaoou Tang.
+\newblock {DeepFashion}: Powering robust clothes recognition and retrieval with rich annotations.
+\newblock In \emph{CVPR}, 2016.
+
+\bibitem[Loper et~al.(2015)Loper, Mahmood, Romero, Pons-Moll, and Black]{loper2015smpl}
+Matthew Loper, Naureen Mahmood, Javier Romero, Gerard Pons-Moll, and Michael~J. Black.
+\newblock {SMPL}: A skinned multi-person linear model.
+\newblock \emph{ACM TOG}, 34\penalty0 (6):\penalty0 248:1--248:16, 2015.
+
+\bibitem[Lu et~al.(2024)Lu, Zhang, Ma, Xie, and Lai]{cfld2024}
+Yanzuo Lu, Manlin Zhang, Andy~J. Ma, Xiaohua Xie, and Jian-Huang Lai.
+\newblock Coarse-to-fine latent diffusion for pose-guided person image synthesis.
+\newblock In \emph{CVPR}, 2024.
+
+\bibitem[Murphy et~al.(2021)Murphy, Esteves, Jampani, Ramalingam, and Makadia]{murphy2021ipdf}
+Kieran Murphy, Carlos Esteves, Varun Jampani, Srikumar Ramalingam, and Ameesh Makadia.
+\newblock Implicit-{PDF}: Non-parametric representation of probability distributions on the rotation manifold.
+\newblock In \emph{ICML}, 2021.
+
+\bibitem[Neverova et~al.(2018)Neverova, G{\"u}ler, and Kokkinos]{neverova2018dpt}
+Natalia Neverova, R{\i}za~Alp G{\"u}ler, and Iasonas Kokkinos.
+\newblock Dense pose transfer.
+\newblock In \emph{ECCV}, 2018.
+
+\bibitem[Neverova et~al.(2019)Neverova, Thewlis, G{\"u}ler, Kokkinos, and Vedaldi]{neverova2019slim}
+Natalia Neverova, James Thewlis, R{\i}za~Alp G{\"u}ler, Iasonas Kokkinos, and Andrea Vedaldi.
+\newblock Slim {DensePose}: Thrifty learning from sparse annotations and motion cues.
+\newblock In \emph{CVPR}, 2019.
+
+\bibitem[Neverova et~al.(2020)Neverova, Novotny, Khalidov, Szafraniec, Labatut, and Vedaldi]{neverova2020cse}
+Natalia Neverova, David Novotny, Vasil Khalidov, Marc Szafraniec, Patrick Labatut, and Andrea Vedaldi.
+\newblock Continuous surface embeddings.
+\newblock In \emph{NeurIPS}, 2020.
+
+\bibitem[Neverova et~al.(2021)Neverova, Sanakoyeu, Labatut, Novotny, and Vedaldi]{neverova2021ucm}
+Natalia Neverova, Artsiom Sanakoyeu, Patrick Labatut, David Novotny, and Andrea Vedaldi.
+\newblock Discovering relationships between object categories via universal canonical maps.
+\newblock In \emph{CVPR}, 2021.
+
+\bibitem[Park et~al.(2019)Park, Patten, and Vincze]{park2019pix2pose}
+Kiru Park, Timothy Patten, and Markus Vincze.
+\newblock {Pix2Pose}: Pixel-wise coordinate regression of objects for 6d pose estimation.
+\newblock In \emph{ICCV}, 2019.
+
+\bibitem[Patel et~al.(2021)Patel, Huang, Tesch, Hoffmann, Tripathi, and Black]{patel2021agora}
+Priyanka Patel, Chun-Hao~P. Huang, Joachim Tesch, David~T. Hoffmann, Shashank Tripathi, and Michael~J. Black.
+\newblock {AGORA}: Avatars in geography optimized for regression analysis.
+\newblock In \emph{CVPR}, 2021.
+
+\bibitem[Pavlakos et~al.(2019)Pavlakos, Choutas, Ghorbani, Bolkart, Osman, Tzionas, and Black]{pavlakos2019smplx}
+Georgios Pavlakos, Vasileios Choutas, Nima Ghorbani, Timo Bolkart, Ahmed A.~A. Osman, Dimitrios Tzionas, and Michael~J. Black.
+\newblock Expressive body capture: {3D} hands, face, and body from a single image.
+\newblock In \emph{CVPR}, 2019.
+
+\bibitem[Pham et~al.(2024)Pham, Zhang, and Yoo]{pham2024xmdpt}
+Trung~X. Pham, Kang Zhang, and Chang~D. Yoo.
+\newblock Cross-view masked diffusion transformers for person image synthesis.
+\newblock In \emph{ICML}, 2024.
+
+\bibitem[Pozdeev et~al.(2026)Pozdeev, Artemov, Bhattarai, and Sevastopolsky]{pozdeev2025densemarks}
+Dmitrii Pozdeev, Alexey Artemov, Ananta~R. Bhattarai, and Artem Sevastopolsky.
+\newblock {DenseMarks}: Learning canonical embeddings for human head images via point tracks.
+\newblock In \emph{ICLR}, 2026.
+\newblock arXiv:2511.02830.
+
+\bibitem[Ranftl et~al.(2021)Ranftl, Bochkovskiy, and Koltun]{ranftl2021dpt}
+Ren{\'e} Ranftl, Alexey Bochkovskiy, and Vladlen Koltun.
+\newblock Vision transformers for dense prediction.
+\newblock In \emph{ICCV}, 2021.
+
+\bibitem[Ranftl et~al.(2022)Ranftl, Lasinger, Hafner, Schindler, and Koltun]{ranftl2020midas}
+Ren{\'e} Ranftl, Katrin Lasinger, David Hafner, Konrad Schindler, and Vladlen Koltun.
+\newblock Towards robust monocular depth estimation: Mixing datasets for zero-shot cross-dataset transfer.
+\newblock \emph{IEEE TPAMI}, 44\penalty0 (3):\penalty0 1623--1637, 2022.
+
+\bibitem[Ray et~al.(2008)Ray, Vallet, Li, and L{\'e}vy]{ray2008nsym}
+Nicolas Ray, Bruno Vallet, Wan~Chiu Li, and Bruno L{\'e}vy.
+\newblock {N}-symmetry direction field design.
+\newblock \emph{ACM TOG}, 27\penalty0 (2):\penalty0 10:1--10:13, 2008.
+
+\bibitem[Ren et~al.(2022)Ren, Fan, Li, Liu, and Li]{ren2022nted}
+Yurui Ren, Xiaoqing Fan, Ge Li, Shan Liu, and Thomas~H. Li.
+\newblock Neural texture extraction and distribution for controllable person image synthesis.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Rombach et~al.(2022)Rombach, Blattmann, Lorenz, Esser, and Ommer]{rombach2022ldm}
+Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, and Bj{\"o}rn Ommer.
+\newblock High-resolution image synthesis with latent diffusion models.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Saito et~al.(2020)Saito, Simon, Saragih, and Joo]{saito2020pifuhd}
+Shunsuke Saito, Tomas Simon, Jason Saragih, and Hanbyul Joo.
+\newblock {PIFuHD}: Multi-level pixel-aligned implicit function for high-resolution 3d human digitization.
+\newblock In \emph{CVPR}, 2020.
+
+\bibitem[Shapovalov et~al.(2021)Shapovalov, Novotny, Graham, Labatut, and Vedaldi]{shapovalov2021densepose3d}
+Roman Shapovalov, David Novotny, Benjamin Graham, Patrick Labatut, and Andrea Vedaldi.
+\newblock {DensePose 3D}: Lifting canonical surface maps of articulated objects to the third dimension.
+\newblock In \emph{ICCV}, 2021.
+
+\bibitem[Shen et~al.(2024)Shen, Ye, Zhang, Wang, Han, and Yang]{shen2024pcdm}
+Fei Shen, Hu Ye, Jun Zhang, Cong Wang, Xiao Han, and Wei Yang.
+\newblock Advancing pose-guided image synthesis with progressive conditional diffusion models.
+\newblock In \emph{ICLR}, 2024.
+
+\bibitem[Shysheya et~al.(2019)Shysheya, Zakharov, Aliev, Bashirov, Burkov, Iskakov, Ivakhnenko, Malkov, Pasechnik, Ulyanov, Vakhitov, and Lempitsky]{shysheya2019tna}
+Aliaksandra Shysheya, Egor Zakharov, Kara-Ali Aliev, Renat Bashirov, Egor Burkov, Karim Iskakov, Aleksei Ivakhnenko, Yury Malkov, Igor Pasechnik, Dmitry Ulyanov, Alexander Vakhitov, and Victor Lempitsky.
+\newblock Textured neural avatars.
+\newblock In \emph{CVPR}, 2019.
+
+\bibitem[Sim{\'e}oni et~al.(2025)Sim{\'e}oni, Vo, Seitzer, Baldassarre, Oquab, Jose, Khalidov, Szafraniec, Yi, Ramamonjisoa, Massa, Haziza, Wehrstedt, Wang, Darcet, Moutakanni, Sentana, Roberts, Vedaldi, Tolan, Brandt, Couprie, Mairal, J{\'e}gou, Labatut, and Bojanowski]{dinov3}
+Oriane Sim{\'e}oni, Huy~V. Vo, Maximilian Seitzer, Federico Baldassarre, Maxime Oquab, Cijo Jose, Vasil Khalidov, Marc Szafraniec, Seungeun Yi, Micha{\"e}l Ramamonjisoa, Francisco Massa, Daniel Haziza, Luca Wehrstedt, Jianyuan Wang, Timoth{\'e}e Darcet, Th{\'e}o Moutakanni, Leonel Sentana, Claire Roberts, Andrea Vedaldi, Jamie Tolan, John Brandt, Camille Couprie, Julien Mairal, Herv{\'e} J{\'e}gou, Patrick Labatut, and Piotr Bojanowski.
+\newblock {DINOv3}.
+\newblock \emph{arXiv:2508.10104}, 2025.
+
+\bibitem[Sorkine and Alexa(2007)]{sorkine2007arap}
+Olga Sorkine and Marc Alexa.
+\newblock As-rigid-as-possible surface modeling.
+\newblock In \emph{Symposium on Geometry Processing}, 2007.
+
+\bibitem[Stam(1999)]{stam1999diffraction}
+Jos Stam.
+\newblock Diffraction shaders.
+\newblock In \emph{SIGGRAPH}, pages 101--110, 1999.
+
+\bibitem[Tan et~al.(2021)Tan, Tang, Dou, Guo, Pandey, Keskin, Du, Sun, Bouaziz, Fanello, Tan, and Zhang]{tan2021humangps}
+Feitong Tan, Danhang Tang, Mingsong Dou, Kaiwen Guo, Rohit Pandey, Cem Keskin, Ruofei Du, Deqing Sun, Sofien Bouaziz, Sean Fanello, Ping Tan, and Yinda Zhang.
+\newblock {HumanGPS}: Geodesic {PreServing} feature for dense human correspondences.
+\newblock In \emph{CVPR}, 2021.
+
+\bibitem[Tesch et~al.(2025)Tesch, Becherini, Achar, Yiannakidis, Kocabas, Patel, and Black]{tesch2025bedlam2}
+Joachim Tesch, Giorgio Becherini, Prerana Achar, Anastasios Yiannakidis, Muhammed Kocabas, Priyanka Patel, and Michael~J. Black.
+\newblock {BEDLAM2.0}: Synthetic humans and cameras in motion.
+\newblock In \emph{NeurIPS Datasets and Benchmarks Track}, 2025.
+\newblock arXiv:2511.14394.
+
+\bibitem[Varol et~al.(2017)Varol, Romero, Martin, Mahmood, Black, Laptev, and Schmid]{varol2017surreal}
+G{\"u}l Varol, Javier Romero, Xavier Martin, Naureen Mahmood, Michael~J. Black, Ivan Laptev, and Cordelia Schmid.
+\newblock Learning from synthetic humans.
+\newblock In \emph{CVPR}, 2017.
+
+\bibitem[Vaxman et~al.(2016)Vaxman, Campen, Diamanti, Panozzo, Bommes, Hildebrandt, and Ben-Chen]{vaxman2016directional}
+Amir Vaxman, Marcel Campen, Olga Diamanti, Daniele Panozzo, David Bommes, Klaus Hildebrandt, and Mirela Ben-Chen.
+\newblock Directional field synthesis, design, and processing.
+\newblock \emph{Comput. Graph. Forum}, 35\penalty0 (2):\penalty0 545--572, 2016.
+
+\bibitem[Wang et~al.(2019)Wang, Sridhar, Huang, Valentin, Song, and Guibas]{wang2019nocs}
+He Wang, Srinath Sridhar, Jingwei Huang, Julien Valentin, Shuran Song, and Leonidas~J. Guibas.
+\newblock Normalized object coordinate space for category-level {6D} object pose and size estimation.
+\newblock In \emph{CVPR}, 2019.
+
+\bibitem[Wang et~al.(2004)Wang, Bovik, Sheikh, and Simoncelli]{wang2004ssim}
+Zhou Wang, Alan~C. Bovik, Hamid~R. Sheikh, and Eero~P. Simoncelli.
+\newblock Image quality assessment: From error visibility to structural similarity.
+\newblock \emph{IEEE TIP}, 13\penalty0 (4):\penalty0 600--612, 2004.
+
+\bibitem[Wu et~al.(2019)Wu, Kirillov, Massa, Lo, and Girshick]{wu2019detectron2}
+Yuxin Wu, Alexander Kirillov, Francisco Massa, Wan-Yen Lo, and Ross Girshick.
+\newblock Detectron2.
+\newblock \url{https://github.com/facebookresearch/detectron2}, 2019.
+
+\bibitem[Xiu et~al.(2022)Xiu, Yang, Tzionas, and Black]{xiu2022icon}
+Yuliang Xiu, Jinlong Yang, Dimitrios Tzionas, and Michael~J. Black.
+\newblock {ICON}: Implicit clothed humans obtained from normals.
+\newblock In \emph{CVPR}, 2022.
+
+\bibitem[Xu et~al.(2024{\natexlab{a}})Xu, Lv, Yan, Jin, Wu, Xu, Liu, Zhou, Rao, Sheng, Liu, and Yang]{xu2024interx}
+Liang Xu, Xintao Lv, Yichao Yan, Xin Jin, Shuwen Wu, Congsheng Xu, Yifan Liu, Yizhou Zhou, Fengyun Rao, Xingdong Sheng, Yunhui Liu, and Xiaokang Yang.
+\newblock {Inter-X}: Towards versatile human-human interaction analysis.
+\newblock In \emph{CVPR}, 2024{\natexlab{a}}.
+
+\bibitem[Xu et~al.(2019)Xu, Zhu, and Tung]{xu2019denserac}
+Yuanlu Xu, Song-Chun Zhu, and Tony Tung.
+\newblock {DenseRaC}: Joint {3D} pose and shape estimation by dense render-and-compare.
+\newblock In \emph{ICCV}, 2019.
+
+\bibitem[Xu et~al.(2024{\natexlab{b}})Xu, Zhang, Liew, Yan, Liu, Zhang, Feng, and Shou]{xu2024magicanimate}
+Zhongcong Xu, Jianfeng Zhang, Jun~Hao Liew, Hanshu Yan, Jia-Wei Liu, Chenxu Zhang, Jiashi Feng, and Mike~Zheng Shou.
+\newblock {MagicAnimate}: Temporally consistent human image animation using diffusion model.
+\newblock In \emph{CVPR}, 2024{\natexlab{b}}.
+
+\bibitem[Yang et~al.(2019)Yang, Song, Wang, and Jiang]{yang2019parsingrcnn}
+Lu Yang, Qing Song, Zhihui Wang, and Ming Jiang.
+\newblock Parsing {R-CNN} for instance-level human analysis.
+\newblock In \emph{CVPR}, 2019.
+
+\bibitem[Yin et~al.(2023)Yin, Guo, Kaufmann, Zarate, Song, and Hilliges]{yin2023hi4d}
+Yifei Yin, Chen Guo, Manuel Kaufmann, Juan~Jose Zarate, Jie Song, and Otmar Hilliges.
+\newblock {Hi4D}: {4D} instance segmentation of close human interaction.
+\newblock In \emph{CVPR}, 2023.
+
+\bibitem[Zeng et~al.(2020)Zeng, Ouyang, Luo, Liu, and Wang]{zeng2020decomr}
+Wang Zeng, Wanli Ouyang, Ping Luo, Wentao Liu, and Xiaogang Wang.
+\newblock {3D} human mesh regression with dense correspondence.
+\newblock In \emph{CVPR}, 2020.
+
+\bibitem[Zhang et~al.(2018)Zhang, Isola, Efros, Shechtman, and Wang]{zhang2018lpips}
+Richard Zhang, Phillip Isola, Alexei~A. Efros, Eli Shechtman, and Oliver Wang.
+\newblock The unreasonable effectiveness of deep features as a perceptual metric.
+\newblock In \emph{CVPR}, 2018.
+
+\bibitem[Zhou et~al.(2022)Zhou, Yin, Chen, Sun, Gao, and Li]{zhou2022casd}
+Xinyue Zhou, Mingyu Yin, Xinyuan Chen, Li Sun, Changxin Gao, and Qingli Li.
+\newblock Cross attention based style distribution for controllable person image synthesis.
+\newblock In \emph{ECCV}, 2022.
+
+\bibitem[Zhou et~al.(2019)Zhou, Barnes, Lu, Yang, and Li]{zhou2019continuity}
+Yi Zhou, Connelly Barnes, Jingwan Lu, Jimei Yang, and Hao Li.
+\newblock On the continuity of rotation representations in neural networks.
+\newblock In \emph{CVPR}, 2019.
+
+\bibitem[Zhou et~al.(2025)Zhou, Liu, Han, Liu, Ng, Xie, Cong, Li, Xu, P{\'e}rez-R{\'u}a, Xiang, Shi, and He]{leffa2025}
+Zijian Zhou, Shikun Liu, Xiao Han, Haozhe Liu, Kam~Woh Ng, Tian Xie, Yuren Cong, Hang Li, Mengmeng Xu, Juan-Manuel P{\'e}rez-R{\'u}a, Tao Xiang, Miaojing Shi, and Sen He.
+\newblock Learning flow fields in attention for controllable person image generation.
+\newblock In \emph{CVPR}, 2025.
+
+\bibitem[Zhu et~al.(2024)Zhu, Chen, Dai, Xu, Cao, Yao, Zhu, and Zhu]{zhu2024champ}
+Shenhao Zhu, Junming~Leo Chen, Zuozhuo Dai, Yinghui Xu, Xun Cao, Yao Yao, Hao Zhu, and Siyu Zhu.
+\newblock {Champ}: Controllable and consistent human image animation with {3D} parametric guidance.
+\newblock In \emph{ECCV}, 2024.
+
+\end{thebibliography}
