@@ -1,0 +1,27 @@
+# Stage 2 (research run dp_w_MF, slurm/dp_w_mf.sbatch): joint fine-tune of stage 1 with DensePose-COCO, one COCO step
+# in every two. 10k steps were run; the released model is the 3,000-step checkpoint (0.741 GPS AP on COCO minival,
+# the best of the 1k-10k checkpoints: 0.713 / 0.729 / 0.741 / 0.737 at 5k / 0.734 at 10k).
+run_dir: ~/runs/pff_stage2
+init: ~/runs/pff_stage1/ckpt_120000.pt
+data:
+  bedlam_shards: ~/data/bedlam2/dp_shards_512
+  mamma_shards: ~/data/datasets/dp_shards_512_mamma
+  mamma_holdout: assets/mamma_holdout_seqs.txt
+  uv_asset: smplx_face_uv_v2.npy
+  hidden_mask: true
+  coco_train_ann: ~/data/densepose_coco/densepose_coco_2014_train.json
+  coco_train_img: ~/data/densepose_coco/train2014
+  coco_val_ann: ~/data/densepose_coco/densepose_coco_2014_minival.json
+  coco_val_img: ~/data/coco_val2014_minival
+train:
+  steps: 10000
+  warmup: 200
+  batch: 32
+  lr: 5.0e-5
+  bb_mult: 0.1                # flat: backbone at lr x 0.1
+  coco_period: 2              # every second step is a COCO batch
+  workers: 6                  # two loader stacks per rank (synthetic + COCO): fewer workers each
+  log_every: 50
+  val_every: 500
+  save_every: 1000
+loss: {w_uv: 1.0, w_rot: 1.0, w_xyz: 2.0, w_xg: 5.0, csc_tau: 0.005, csc_clip: 0.20}

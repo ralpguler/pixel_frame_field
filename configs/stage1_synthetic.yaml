@@ -1,0 +1,24 @@
+# Stage 1 (research run dp_w_M, slurm/dp_winner.sbatch arm M): from the DINOv3 ViT-L backbone, synthetic data only,
+# BEDLAM2 + MAMMA about 50/50, 120k steps on 4 GPUs x 32 crops. Its last checkpoint initialises stage 2.
+run_dir: ~/runs/pff_stage1
+init: pretrained              # DINOv3 backbone through timm, fresh decoder and heads
+data:
+  bedlam_shards: ~/data/bedlam2/dp_shards_512          # <root>/train/shard-*.tar (711 GB)
+  mamma_shards: ~/data/datasets/dp_shards_512_mamma    # <root>/train/*.tar (907 GB)
+  mamma_holdout: assets/mamma_holdout_seqs.txt         # MAMMA sequences held out for evaluation
+  uv_asset: smplx_face_uv_v2.npy                       # fold-free hand and foot charts
+  hidden_mask: true                                    # SMPL-X eyeballs and mouth interior leave the supervision
+  coco_val_ann: ~/data/densepose_coco/densepose_coco_2014_minival.json   # only for the quick trend log
+  coco_val_img: ~/data/coco_val2014_minival
+train:
+  steps: 120000
+  warmup: 500
+  batch: 32                   # per GPU
+  lr: 3.0e-4
+  llrd_decay: 0.75            # layer-wise learning-rate decay over the backbone
+  coco_period: 0              # synthetic only
+  workers: 12
+  log_every: 50
+  val_every: 2000
+  save_every: 2000
+loss: {w_uv: 1.0, w_rot: 1.0, w_xyz: 2.0, w_xg: 5.0, csc_tau: 0.005, csc_clip: 0.20}

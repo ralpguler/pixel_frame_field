@@ -6,3 +6,4 @@ __pycache__/
 *.ckpt
 checkpoints/
 outputs/
+assets/dp24_uv2xyz_K*.npz
