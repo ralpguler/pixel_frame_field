@@ -69,3 +69,20 @@ Rerunning a command resumes from the newest checkpoint in its `run_dir`.
     (`research/slurm/mamma512.sbatch`).
 - DensePose-COCO: the official annotations (`densepose_coco_2014_train.json`, `densepose_coco_2014_minival.json`)
   with the COCO 2014 images.
+
+## Inference, demo and evaluation
+
+```bash
+python demo.py photo.jpg out.png --ckpt checkpoints/pff_dp_w_MF_3k.pt          # panels: boxes | parts | UV | surface normal
+python demo.py clip.mp4 out.mp4 --ckpt checkpoints/pff_dp_w_MF_3k.pt           # the same, per frame
+python demo.py clip.mp4 fields/ --ckpt checkpoints/pff_dp_w_MF_3k.pt --dump    # per-frame field files for viz/
+python eval/coco_gps.py --ckpt checkpoints/pff_dp_w_MF_3k.pt --images /data/coco/val2014    # 0.741 GPS AP
+```
+
+People are found by an RT-DETRv2 detector (`pff/detect.py`) unless boxes are given. `pff/infer.py` crops each person
+as the evaluation does, runs the model and pastes part, U, V and rotation back into the image. Details, data and
+reference numbers: `eval/README.md`; the HTML viewers: `viz/README.md`.
+
+**Checked against the research code**, each identical: the COCO per-crop maps and the first evaluation predictions,
+the `--dump` fields, the template normals, and the BEDLAM rotation evaluation on four validation samples. Not run
+here: the detector and tracker (GPU) and the full evaluations.
